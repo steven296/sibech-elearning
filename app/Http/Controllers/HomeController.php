@@ -26,6 +26,6 @@ class HomeController extends Controller
             ->latest()
             ->get();
 
-        return view('home', compact('courses', 'teachers', 'categories'));
+        return view('home', compact('courses', 'categories'));
     }
 }

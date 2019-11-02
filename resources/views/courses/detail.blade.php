@@ -78,11 +78,7 @@
                                     <div class="card-body">
                                         <div class="list_lessons">
                                             <ul>
-
-                                                @foreach($tema->lessons as $lesson)
-                                                    <li><a href="{{ $lesson->video }}" class="video">{{ $lesson->name }}</a><span>00:59</span></li>
-                                                @endforeach
-
+                                                @include('partials.courses.view_lesson')
                                             </ul>
                                         </div>
                                     </div>
@@ -250,8 +246,8 @@
                         <figure>
                             <a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video"><i class="arrow_triangle-right"></i><img src="{{ asset('img/course_video.jpg') }}" alt="" class="img-fluid"><span>Vista previa de este curso</span></a>
                         </figure>
-                        <a href="{{ route('cursos.subscribed') }}" class="btn_1 full-width">Suscribirse</a>
-                        <a href="#0" class="btn_1 full-width outline"><i class="icon_heart"></i> Añadir a mi Lista</a>
+
+                        @include('partials.courses.action_button')
                         <div id="list_feat">
                             <h3>Este curso incluye</h3>
                             <ul>

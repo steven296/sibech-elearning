@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable,Billable;
 
     protected static function boot () {
 		parent::boot();
@@ -60,4 +61,7 @@ class User extends Authenticatable
     public function socialAccount () {
     	return $this->hasOne(UserSocialAccount::class);
     }
+    public function suscripcion(){
+		return $this->hasMany(Suscripcion::class)->select('id','user_id');
+	}
 }

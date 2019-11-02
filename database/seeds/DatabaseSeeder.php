@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
 	    factory(\App\Level::class, 1)->create(['name' => 'Avanzado']);
 	    factory(\App\Category::class, 6)->create();
 
-		factory(\App\Course::class, 50)
+		factory(\App\Course::class, 20)
 		    ->create()
 		    ->each(function (\App\Course $c) {
 		    	$c->goals()->saveMany(factory(\App\Goal::class, 2)->create());

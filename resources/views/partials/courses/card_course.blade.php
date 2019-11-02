@@ -3,7 +3,6 @@
         <div class="block-horizzontal"></div>
         <a href="#0" class="wish_bt"></a>
         <a href="{{ route('curso.show', $course) }}"><img src="{{ $course->pathAttachment() }}" class="img-fluid" alt=""></a>
-
     </figure>
     <div class="wrapper">
         <h6>{{ $course->name }}</h6>
@@ -14,6 +13,6 @@
     </div>
     <ul>
         <li><i class="icon_clock_alt"></i> 1h 30min</li>
-        <li><a href="{{ route('curso.show', 1) }}">Ver mas</a></li>
+        <li><a href="{{ route('curso.show', $course->id) }}">Ver mas</a></li>
     </ul>
 </div>

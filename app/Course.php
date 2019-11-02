@@ -89,7 +89,6 @@ class Course extends Model
 		return $this->hasMany(Tema::class);
 	}
 
-
 	// Estrellas de Calificacion
 
 	public function getCustomRatingAttribute () {

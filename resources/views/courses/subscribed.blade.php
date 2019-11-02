@@ -13,7 +13,7 @@
 @section('content')
     <div class="container margin_60_35">
 		<div class="pricing-container cd-has-margins">
-		<div class="pricing-switcher">
+		{{-- <div class="pricing-switcher">
 			<p class="fieldset">
 				<input type="radio" name="duration-2" value="monthly" id="monthly-2" checked>
 				<label for="monthly-2">Monthly</label>
@@ -21,71 +21,14 @@
 				<label for="yearly-2">Yearly</label>
 				<span class="switch"></span>
 			</p>
-		</div>
+		</div> --}}
 		<!--/pricing-switcher -->
 		<ul class="pricing-list bounce-invert">
-			<li>
-				<ul class="pricing-wrapper">
-					<li data-type="monthly" class="is-visible">
-						<header class="pricing-header">
-							<h2>Basic</h2>
-
-							<div class="price">
-								<span class="currency">$</span>
-								<span class="price-value">30</span>
-								<span class="price-duration">mo</span>
-							</div>
-						</header>
-						<!-- /pricing-header -->
-						<div class="pricing-body">
-							<ul class="pricing-features">
-								<li><em>One Time</em> Fee</li>
-								<li><em>1</em> User</li>
-								<li><em>Lifetime</em> Availability</li>
-								<li><em>Non</em> Featured</li>
-								<li><em>30 days</em> Listing</li>
-								<li><em>24/7</em> Support</li>
-							</ul>
-						</div>
-						<!-- /pricing-body -->
-						<footer class="pricing-footer">
-							<a class="select-plan" href="#0">Select</a>
-						</footer>
-					</li>
-					<li data-type="yearly" class="is-hidden">
-						<header class="pricing-header">
-							<h2>Basic</h2>
-
-							<div class="price">
-								<span class="currency">$</span>
-								<span class="price-value">320</span>
-								<span class="price-duration">yr</span>
-							</div>
-						</header>
-						<!-- /pricing-header -->
-						<div class="pricing-body">
-							<ul class="pricing-features">
-								<li><em>One Time</em> Fee</li>
-								<li><em>1</em> User</li>
-								<li><em>Lifetime</em> Availability</li>
-								<li><em>Non</em> Featured</li>
-								<li><em>30 days</em> Listing</li>
-								<li><em>24/7</em> Support</li>
-							</ul>
-						</div> 
-						<!-- /pricing-body -->
-						<footer class="pricing-footer">
-							<a class="select-plan" href="#0">Select</a>
-						</footer>
-					</li>
-				</ul>
-				<!-- /pricing-wrapper -->
-			</li>
 			<li class="popular">
 				<ul class="pricing-wrapper">
 					<li data-type="monthly" class="is-visible">
 						<header class="pricing-header">
-							<h2>Popular</h2>
+							<h2>Mensual</h2>
 							<div class="price">
 								<span class="currency">$</span>
 								<span class="price-value">60</span>
@@ -96,7 +39,6 @@
 						<div class="pricing-body">
 							<ul class="pricing-features">
 								<li><em>One Time</em> Fee</li>
-								<li><em>3</em> User</li>
 								<li><em>Lifetime</em> Availability</li>
 								<li><em>Non</em> Featured</li>
 								<li><em>30 days</em> Listing</li>
@@ -105,7 +47,7 @@
 						</div>
 						<!-- /pricing-body -->
 						<footer class="pricing-footer">
-							<a class="select-plan" href="#0">Select</a>
+							<a class="select-plan" href="{{route('cursos.process')}}">Select</a>
 						</footer>
 					</li>
 					<li data-type="yearly" class="is-hidden">
@@ -122,7 +64,6 @@
 						<div class="pricing-body">
 							<ul class="pricing-features">
 								<li><em>One Time</em> Fee</li>
-								<li><em>3</em> User</li>
 								<li><em>Lifetime</em> Availability</li>
 								<li><em>Non</em> Featured</li>
 								<li><em>30 days</em> Listing</li>
@@ -131,46 +72,20 @@
 						</div>
 						<!-- /pricing-body -->
 						<footer class="pricing-footer">
-							<a class="select-plan" href="#0">Select</a>
+							<a class="select-plan" href="{{route('cursos.process')}}">Select</a>
 						</footer>
 					</li>
 				</ul>
 				<!-- /cd-pricing-wrapper -->
 			</li>
-			<li>
+			<li class="popular">
 				<ul class="pricing-wrapper">
 					<li data-type="monthly" class="is-visible">
 						<header class="pricing-header">
-							<h2>Premier</h2>
+							<h2>Anual</h2>
 							<div class="price">
 								<span class="currency">$</span>
-								<span class="price-value">90</span>
-								<span class="price-duration">mo</span>
-							</div>
-						</header>
-						<!-- /pricing-header -->
-						<div class="pricing-body">
-							<ul class="pricing-features">
-								<li><em>One Time</em> Fee</li>
-								<li><em>5</em> User</li>
-								<li><em>Lifetime</em> Availability</li>
-								<li><em>Non</em> Featured</li>
-								<li><em>30 days</em> Listing</li>
-								<li><em>24/7</em> Support</li>
-							</ul>
-						</div>
-						<!-- /pricing-body -->
-						<footer class="pricing-footer">
-							<a class="select-plan" href="#0">Select</a>
-						</footer>
-					</li>
-					<li data-type="yearly" class="is-hidden">
-						<header class="pricing-header">
-							<h2>Premier</h2>
-
-							<div class="price">
-								<span class="currency">$</span>
-								<span class="price-value">950</span>
+								<span class="price-value">630</span>
 								<span class="price-duration">yr</span>
 							</div>
 						</header>
@@ -178,7 +93,6 @@
 						<div class="pricing-body">
 							<ul class="pricing-features">
 								<li><em>One Time</em> Fee</li>
-								<li><em>5</em> User</li>
 								<li><em>Lifetime</em> Availability</li>
 								<li><em>Non</em> Featured</li>
 								<li><em>30 days</em> Listing</li>
@@ -187,11 +101,10 @@
 						</div>
 						<!-- /pricing-body -->
 						<footer class="pricing-footer">
-							<a class="select-plan" href="#0">Select</a>
+							<a class="select-plan" href="{{route('cursos.process')}}">Select</a>
 						</footer>
 					</li>
 				</ul>
-				<!-- /pricing-wrapper -->
 			</li>
 		</ul>
 		<!-- /pricing-list -->
