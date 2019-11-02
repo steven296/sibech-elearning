@@ -4,7 +4,7 @@
         <a href="/"><img src="{{ asset('img/logo-elearning.png') }}" width="170" height="42" data-retina="true" alt=""></a>
     </div>
     <ul id="top_menu">
-        <li><a href="#0" class="search-overlay-menu-btn">Search</a></li>
+        <li><a href="#0" class="search-overlay-menu-btn">Buscar</a></li>
     </ul>
     <!-- /top_menu -->
     <a href="#menu" class="btn_mobile">

@@ -29,38 +29,27 @@
                     <section id="description">
                         <h2>Descripcion</h2>
                         <p>{{ $curso->description }}</p>
-                        <h5>What will you learn</h5>
+                        <hr>
+                        <h5>Que aprenderas?</h5>
                         <ul class="list_ok">
-                            <li>
-                                <h6>Suas summo id sed erat erant oporteat</h6>
-                                <p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus.</p>
-                            </li>
-                            <li>
-                                <h6>Illud singulis indoctum ad sed</h6>
-                                <p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus.</p>
-                            </li>
-                            <li>
-                                <h6>Alterum bonorum mentitum an mel</h6>
-                                <p>Ut unum diceret eos, mel cu velit principes, ut quo inani dolorem mediocritatem. Mea in justo posidonium necessitatibus.</p>
-                            </li>
+                            @foreach( $curso->goals as $meta)
+                                <li>
+                                    <p>{{ $meta->goal }}</p>
+                                </li>
+                            @endforeach
                         </ul>
                         <hr>
-                        <p>Mea appareat omittantur eloquentiam ad, nam ei quas oportere democritum. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
+                                <h5>Requisitos del Curso</h5>
                                 <ul class="bullets">
-                                    <li>Dolorem mediocritatem</li>
-                                    <li>Mea appareat</li>
-                                    <li>Prima causae</li>
-                                    <li>Singulis indoctum</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="bullets">
-                                    <li>Timeam inimicus</li>
-                                    <li>Oportere democritum</li>
-                                    <li>Cetero inermis</li>
-                                    <li>Pertinacia eum</li>
+
+                                    @foreach( $curso->requirements as $requisito)
+                                    
+                                        <li>{{ $requisito->requirement }}</li>
+                                    
+                                    @endforeach
+
                                 </ul>
                             </div>
                         </div>
@@ -72,103 +61,36 @@
                         <div class="intro_title">
                             <h2>Lecciones</h2>
                             <ul>
-                                <li>18 lessons</li>
+                                <li>15 Lecciones</li>
                                 <li>01:02:10</li>
                             </ul>
                         </div>
                         <div id="accordion_lessons" role="tablist" class="add_bottom_45">
+                            @foreach($curso->temas as $tema )
                             <div class="card">
-                                <div class="card-header" role="tab" id="headingOne">
+                                <div class="card-header" role="tab" id="heading{{ $tema->id }}">
                                     <h5 class="mb-0">
-                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="indicator ti-minus"></i> Introdocution</a>
+                                        <a class="collapsed" data-toggle="collapse" href="#collapse{{ $tema->id }}" aria-expanded="false" aria-controls="collapse{{ $tema->id }}"><i class="indicator ti-minus"></i> {{ $tema->name }}</a>
                                     </h5>
                                 </div>
 
-                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion_lessons">
+                                <div id="collapse{{ $tema->id }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ $tema->id }}" data-parent="#accordion_lessons">
                                     <div class="card-body">
                                         <div class="list_lessons">
                                             <ul>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health Science</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health and Social Care</a><span>00:59</span></li>
-                                                <li><a href="#0" class="txt_doc">Audiology</a><span>00:59</span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /card -->
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingTwo">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="indicator ti-plus"></i>Generative Modeling Review
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion_lessons">
-                                    <div class="card-body">
-                                        <div class="list_lessons">
-                                            <ul>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health Science</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health and Social Care</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">History</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Healthcare Science</a><span>00:59</span></li>
-                                                <li><a href="#0" class="txt_doc">Audiology</a><span>00:59</span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /card -->
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingThree">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            <i class="indicator ti-plus"></i>Variational Autoencoders
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion_lessons">
-                                    <div class="card-body">
-                                        <div class="list_lessons">
-                                            <ul>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health Science</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health and Social Care</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">History</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Healthcare Science</a><span>00:59</span></li>
-                                                <li><a href="#0" class="txt_doc">Audiology</a><span>00:59</span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /card -->
 
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingFourth">
-                                    <h5 class="mb-0">
-                                        <a class="collapsed" data-toggle="collapse" href="#collapseFourth" aria-expanded="false" aria-controls="collapseFourth">
-                                            <i class="indicator ti-plus"></i>Gaussian Mixture Model Review
-                                        </a>
-                                    </h5>
-                                </div>
-                                <div id="collapseFourth" class="collapse" role="tabpanel" aria-labelledby="headingFourth" data-parent="#accordion_lessons">
-                                    <div class="card-body">
-                                        <div class="list_lessons">
-                                            <ul>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health Science</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Health and Social Care</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">History</a><span>00:59</span></li>
-                                                <li><a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video">Healthcare Science</a><span>00:59</span></li>
-                                                <li><a href="#0" class="txt_doc">Audiology</a><span>00:59</span></li>
+                                                @foreach($tema->lessons as $lesson)
+                                                    <li><a href="{{ $lesson->video }}" class="video">{{ $lesson->name }}</a><span>00:59</span></li>
+                                                @endforeach
+
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /card -->
+                            @endforeach
                         </div>
-                        <!-- /accordion -->
+                        <!-- end-accordion -->
                     </section>
                     <!-- /section -->
 
@@ -176,22 +98,22 @@
                         <h2>Instructor</h2><br>
                         <div class="row">
                             <div class="col-lg-3">
-                                <figure><img src="{{ $curso->teacher->user->pathAttachment() }}" alt="Teacher" class="rounded-circle" style="width:150px"></figure>
+                                <figure><img src="{{ $teacher->user->pathAttachment() }}" alt="Teacher" class="rounded-circle" style="width:150px"></figure>
                                 <br>
                                 <ul>
-                                    <li><i class="icon-comment"></i> 1 875 <span class="float-right">Reseñas</span> </li>
-                                    <li><i class="icon-user"></i> 9 850<span class="float-right">Estudiantes</span></li>
-                                    <li><i class="icon-play-circled"></i> {{ $curso->teacher->count_courses }} <span class="float-right">Cursos</span></li>
+                                    <li><i class="icon-comment"></i> {{ $teacher->count_reseñas }} <span class="float-right">Reseñas</span> </li>
+                                    <li><i class="icon-user"></i> {{ $teacher->count_students }}<span class="float-right">Estudiantes</span></li>
+                                    <li><i class="icon-play-circled"></i> {{ $teacher->count_courses }} <span class="float-right">Cursos</span></li>
                                 </ul>				
                             </div>
                             
                             <div class="col-lg-8">
                                 <div class="indent_title_in">
-                                    <h3>{{ $curso->teacher->user->name }}</h3>
-                                    <p>{{ $curso->teacher->title }}</p>
+                                    <h3>{{ $teacher->user->name }}</h3>
+                                    <p>{{ $teacher->title }}</p>
                                 </div>
                                 <div class="wrapper_indent">
-                                    <p>{{ $curso->teacher->biography }}</p>
+                                    <p>{{ $teacher->biography }}</p>
                                 </div>
                                                           
                             </div>
@@ -329,7 +251,7 @@
                             <a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video"><i class="arrow_triangle-right"></i><img src="{{ asset('img/course_video.jpg') }}" alt="" class="img-fluid"><span>Vista previa de este curso</span></a>
                         </figure>
                         <a href="{{ route('cursos.subscribed') }}" class="btn_1 full-width">Suscribirse</a>
-                        <a href="#0" class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>
+                        <a href="#0" class="btn_1 full-width outline"><i class="icon_heart"></i> Añadir a mi Lista</a>
                         <div id="list_feat">
                             <h3>Este curso incluye</h3>
                             <ul>

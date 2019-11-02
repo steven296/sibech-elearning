@@ -11,13 +11,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Storage::deleteDirectory('courses');
-        Storage::deleteDirectory('users');
+		Storage::deleteDirectory('courses');
+		Storage::deleteDirectory('lesson');
+		Storage::deleteDirectory('tema');
+		Storage::deleteDirectory('users');
 
-        Storage::makeDirectory('courses');
-        Storage::makeDirectory('users');
+		Storage::makeDirectory('courses');
+		Storage::makeDirectory('tema');
+		Storage::makeDirectory('lesson');
+		Storage::makeDirectory('users');
 
-        factory(\App\Role::class, 1)->create(['name' => 'admin']);
+		factory(\App\Role::class, 1)->create(['name' => 'admin']);
         factory(\App\Role::class, 1)->create(['name' => 'teacher']);
         factory(\App\Role::class, 1)->create(['name' => 'student']);
 
@@ -55,13 +59,20 @@ class DatabaseSeeder extends Seeder
 	    factory(\App\Level::class, 1)->create(['name' => 'Basico']);
 	    factory(\App\Level::class, 1)->create(['name' => 'Intermedio']);
 	    factory(\App\Level::class, 1)->create(['name' => 'Avanzado']);
-	    factory(\App\Category::class, 5)->create();
+	    factory(\App\Category::class, 6)->create();
 
-	    factory(\App\Course::class, 40)
+		factory(\App\Course::class, 50)
 		    ->create()
 		    ->each(function (\App\Course $c) {
 		    	$c->goals()->saveMany(factory(\App\Goal::class, 2)->create());
 				$c->requirements()->saveMany(factory(\App\Requirement::class, 4)->create());
-		    });
+				$c->reviews()->saveMany(factory(\App\Review::class, 10)->create());
+				$c->temas()->saveMany(factory(\App\Tema::class, 5)->create()
+										->each(function (\App\Tema $t) {
+											$t->lessons()->saveMany(factory(\App\Lesson::class, 3)->create());
+										})
+				);
+				
+			});
     }
 }

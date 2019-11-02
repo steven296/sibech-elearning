@@ -24,13 +24,13 @@
         <div class="container">
             <ul>
                 <li><i class="pe-7s-study"></i>
-                    <h4>+200 courses</h4><span>Explore a variety of fresh topics</span>
+                    <h4>+200 cursos</h4><span>Explora los mejores cursos online</span>
                 </li>
                 <li><i class="pe-7s-cup"></i>
-                    <h4>Expert teachers</h4><span>Find the right instructor for you</span>
+                    <h4>Profesores expertos</h4><span>Elije el mejor instructor para ti</span>
                 </li>
                 <li><i class="pe-7s-target"></i>
-                    <h4>Focus on target</h4><span>Increase your personal expertise</span>
+                    <h4>Cuentanos tus experiencias</h4><span>A</span>
                 </li>
             </ul>
         </div>
@@ -96,8 +96,8 @@
                 <div class="block-reveal">
                     <div class="block-vertical"></div>
                     <div class="box_1">
-                        <h3>Enjoy a great students community</h3>
-                        <p>Ius cu tamquam persequeris, eu veniam apeirian platonem qui, id aliquip voluptatibus pri. Ei mea primis ornatus disputationi. Menandri erroribus cu per, duo solet congue ut. </p>
+                        <h3>La comunidad de alumnos</h3>
+                        <p class="text-justify">El 80% de nuestros estudiantes obtiene un mejor trabajo <br> Contamos con más de 200 cursos, donde te guíaremos a encontrar la ruta que te hará crecer como profesional. </p>
                     </div>
                 </div>
             </div>

@@ -85,8 +85,12 @@ class Course extends Model
 		return $this->belongsTo(Teacher::class);
 	}
 
+	public function temas () {
+		return $this->hasMany(Tema::class);
+	}
 
-	//STARS
+
+	// Estrellas de Calificacion
 
 	public function getCustomRatingAttribute () {
 		return $this->reviews->avg('rating');
@@ -120,5 +124,10 @@ class Course extends Model
 		}else{
 			return 0;
 		}
+	}
+
+	// Estudiantes inscritos al curso
+	public function getCountStudentsAttribute () {
+		return $this->students->count('name');
 	}
 }

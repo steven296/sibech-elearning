@@ -43,8 +43,10 @@ class CourseController extends Controller
       $categories = Category::withCount(['courses'])
         ->latest()
         ->get();
+
+      $teacher = $curso->teacher;
         
-		  return view('courses.detail', compact('curso', 'categories'));
+		  return view('courses.detail', compact('curso', 'categories', 'teacher'));
     }
     
     public function subscribed () {
