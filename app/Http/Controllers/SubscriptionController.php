@@ -1,7 +1,10 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Suscripcion;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -34,7 +37,7 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        $subscription = new \App\Subscription($request->all());
+        $subscription = new \App\Suscripcion($request->all());
         $subscription->num_operacion=$request->get('numOperacion');
         $subscription->nombre_banco=$request->get('nameBanco');
         $subscription->plan=$request->get('tipoSuscripcion');
@@ -52,7 +55,11 @@ class SubscriptionController extends Controller
      */
     public function show($id)
     {
-        //
+        $categories = Category::withCount(['courses'])
+        ->latest()
+        ->get();
+        $suscripciones = Suscripcion::where('user_id',$id)->latest()->get();
+        return view('suscripciones.show',compact('categories','suscripciones'));
     }
 
     /**

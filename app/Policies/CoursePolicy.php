@@ -20,6 +20,7 @@ class CoursePolicy
 
     public function subscribe(User $user){
         $user_id=auth()->user()->id;
+        $status = Suscripcion::where('user_id',$user_id)->get('status');
         $sub = Suscripcion::where('user_id',$user_id)->count();
         return $user->role_id !== Role::ADMIN && ! $sub>0;
     }
@@ -35,8 +36,9 @@ class CoursePolicy
         $user_id=auth()->user()->id;
 
         $sub = Suscripcion::where('user_id',$user_id)->count();
+        $status = Suscripcion::where('user_id',$user_id)->get('status');
         
-        return $sub>0 || $user->role_id == Role::ADMIN;
+        return ($sub>0 && $status=='1') || $user->role_id == Role::ADMIN;
     }
 
     /**
