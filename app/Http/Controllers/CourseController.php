@@ -53,7 +53,12 @@ class CourseController extends Controller
       $categories = Category::withCount(['courses'])
         ->latest()
         ->get();
-      return view('courses.mis-cursos',compact('categories'));
+
+      $courses = Course::with('category','teacher','reviews')
+      ->join('teachers','teacher_id','teachers.id')
+      ->where('teachers.user_id',$id)->get();
+      
+      return view('courses.mis-cursos',compact('categories','courses'));
     }
     
     public function process(){

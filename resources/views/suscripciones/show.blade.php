@@ -30,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($suscripciones as $suscripcion)
+                @forelse ($suscripciones as $suscripcion)
                     <tr>
                         <td>{{ucfirst($suscripcion->plan)}}</td>
                         <td>{{$suscripcion->date_in}}</td>
@@ -42,7 +42,11 @@
                         @endif
                         
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td>No tiene una suscripcion</td>
+                    </tr>
+                @endforelse
                 
             </tbody>
         </table>
