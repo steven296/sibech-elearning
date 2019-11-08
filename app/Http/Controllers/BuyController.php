@@ -1,13 +1,12 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Suscripcion;
 use Illuminate\Http\Request;
+use App\CourseStudent;
+use App\Course;
 
-class SubscriptionController extends Controller
+class BuyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +34,18 @@ class SubscriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        $subscription = new \App\Suscripcion($request->all());
-        $subscription->num_operacion=$request->get('numOperacion');
-        $subscription->nombre_banco=$request->get('nameBanco');
-        $subscription->plan=$request->get('tipoSuscripcion');
-        $subscription->voucher=$request->get('voucher');
-        $subscription->user_id=auth()->user()->id;
-        $subscription->save();
-        return redirect('/');
+        $user_id = auth()->user()->id;
+        $pagar = new CourseStudent();
+        $pagar->course_id=$id;
+        $pagar->student_id=$user_id;
+        $pagar->num_operacion=$request->get('numOperacion');
+        $pagar->nombre_banco=$request->get('nameBanco');
+        $pagar->voucher=$request->get('voucher');
+        $pagar->save();
+
+        return redirect('curso/'.$id)->with('success','Curso Comprado con exito');
     }
 
     /**
@@ -55,11 +56,7 @@ class SubscriptionController extends Controller
      */
     public function show($id)
     {
-        $categories = Category::withCount(['courses'])
-        ->latest()
-        ->get();
-        $suscripciones = Suscripcion::where('user_id',$id)->latest()->get();
-        return view('suscripciones.show',compact('categories','suscripciones'));
+        //
     }
 
     /**

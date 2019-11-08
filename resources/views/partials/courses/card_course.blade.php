@@ -3,6 +3,7 @@
         <div class="block-horizzontal"></div>
         <a href="#0" class="wish_bt"></a>
         <a href="{{ route('curso.show', $course) }}"><img src="{{ $course->pathAttachment() }}" class="img-fluid" alt=""></a>
+        <div class="price">${{$course->price}}</div>
     </figure>
     <div class="wrapper">
         <h6>{{ $course->name }}</h6>

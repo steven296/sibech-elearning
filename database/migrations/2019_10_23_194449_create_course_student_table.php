@@ -17,7 +17,10 @@ class CreateCourseStudentTable extends Migration
             $table->unsignedInteger('course_id');
 	        $table->foreign('course_id')->references('id')->on('courses');
 	        $table->unsignedInteger('student_id');
-	        $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->string('num_operacion');
+            $table->string('nombre_banco');
+            $table->string('voucher')->nullable();
         });
     }
 

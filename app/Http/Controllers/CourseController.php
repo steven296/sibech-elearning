@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -34,7 +35,6 @@ class CourseController extends Controller
       $categories = Category::withCount(['courses'])
         ->latest()
         ->get();
-
       return view('courses.courses_list', compact('courses', 'categories'));
     }
 
@@ -49,11 +49,12 @@ class CourseController extends Controller
 		  return view('courses.detail', compact('curso', 'categories', 'teacher'));
     }
     
-    public function misCursos(Course $course, $id){
+    public function cursosPorMi(Course $course, $id){
       $categories = Category::withCount(['courses'])
         ->latest()
         ->get();
 
+        
       $courses = Course::with('category','teacher','reviews')
       ->join('teachers','teacher_id','teachers.id')
       ->where('teachers.user_id',$id)->get();
@@ -61,11 +62,25 @@ class CourseController extends Controller
       return view('courses.mis-cursos',compact('categories','courses'));
     }
     
-    public function process(){
+    public function misCursos(Course $course, $id){ //falta cambiar
+      $categories = Category::withCount(['courses'])
+        ->latest()
+        ->get();
+
+        
+      $courses = Course::with('category','teacher','reviews')
+      ->join('teachers','teacher_id','teachers.id')
+      ->where('teachers.user_id',$id)->get();
+      
+      return view('courses.mis-cursos',compact('categories','courses'));
+
+    }
+    public function process($id){
       $categories = Category::withCount(['courses'])
       ->latest()
       ->get();
-      return view('courses.process',compact('categories'));
+      $curso = Course::find($id);
+      return view('courses.process',compact('categories','curso'));
     }
 
 

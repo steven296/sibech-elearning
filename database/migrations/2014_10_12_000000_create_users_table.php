@@ -63,7 +63,6 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('roles');
-        Schema::dropIfExists('subscriptions');
         Schema::dropIfExists('user_social_accounts');
     }
 }

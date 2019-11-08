@@ -32,12 +32,13 @@ Route::group(['prefix' => 'cursos'], function () {
 	Route::get('/suscripcion', 'CourseController@subscribed')->name('cursos.subscribed');
 	Route::get('/{categoria}', 'CourseController@index')->name('cursos.index');
 	Route::get('/{course}/inscripcion', 'CourseController@inscribe')->name('cursos.inscribe');
-	Route::get('/suscripcion/process','CourseController@process')->name('cursos.process');
-	Route::get('/mis-cursos/{id}','CourseController@misCursos')->name('cursos.show');
+	Route::get('/mis-cursos-creados/{id}','CourseController@cursosPorMi')->name('cursos.show');
 });
-Route::post('subscription','SubscriptionController@store')->name('subscription.store');
+Route::post('/curso/{id}/pay','BuyController@store')->name('pay.store');
 Route::get('mis-suscripciones/{id}','SubscriptionController@show')->name('subscription.show');
 Route::get('/curso/{curso}', 'CourseController@show')->name('curso.show');
+Route::get('/curso/{id}/comprar/','CourseController@process')->name('cursos.process');
+Route::get('/mis-cursos/{id}','CourseController@misCursos')->name('cursos.misCursos');
 
 
 Route::group(['prefix' => 'perfil'], function(){

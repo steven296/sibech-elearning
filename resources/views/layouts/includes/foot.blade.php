@@ -6,3 +6,10 @@
 <!-- SPECIFIC SCRIPTS -->
 <script src="{{ asset('js/modernizr_tables.js') }}"></script>
 <script src="{{ asset('js/tables_func.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        setTimeout(function(){
+            $(".alert").fadeOut(1500);
+        },3000);
+    });
+</script>

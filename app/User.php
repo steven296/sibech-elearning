@@ -61,7 +61,4 @@ class User extends Authenticatable
     public function socialAccount () {
     	return $this->hasOne(UserSocialAccount::class);
     }
-    public function suscripcion(){
-		return $this->hasMany(Suscripcion::class)->select('id','user_id');
-	}
 }

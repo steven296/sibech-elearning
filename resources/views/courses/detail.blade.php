@@ -25,7 +25,11 @@
         <div class="container margin_60_35">
             <div class="row">
                 <div class="col-lg-8">
-                    
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{session('success')}}
+                        </div>   
+                    @endif
                     <section id="description">
                         <h2>Descripcion</h2>
                         <p>{{ $curso->description }}</p>
@@ -246,7 +250,6 @@
                         <figure>
                             <a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video"><i class="arrow_triangle-right"></i><img src="{{ asset('img/course_video.jpg') }}" alt="" class="img-fluid"><span>Vista previa de este curso</span></a>
                         </figure>
-
                         @include('partials.courses.action_button')
                         <div id="list_feat">
                             <h3>Este curso incluye</h3>
