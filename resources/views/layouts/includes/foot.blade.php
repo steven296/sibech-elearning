@@ -9,7 +9,13 @@
 <script>
     $(document).ready(function(){
         setTimeout(function(){
-            $(".alert").fadeOut(1500);
+            $(".alert-course").fadeOut(1500);
+        },3000);
+    });
+
+    $(document).ready(function(){
+        setTimeout(function(){
+            $(".alert-pass").fadeOut(1500);
         },3000);
     });
 </script>

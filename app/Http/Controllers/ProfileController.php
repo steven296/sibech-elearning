@@ -25,4 +25,25 @@ class ProfileController extends Controller
         
         return view('profile.edit', compact('categories'));
     }
+
+    public function update(Request $request,$id){
+        $user = User::find($id);
+        $pass=$request->get('password');
+        $conf_pass =$request->get('confirm_password');
+
+        $msg='';
+        if($pass==$conf_pass){
+            $user->password=bcrypt($pass);
+            $msg='Contraseña cambiada correctamente';
+            $user->save();
+            $sess='succes_pass';
+        }else{
+            $msg = 'La contraseña no es igual';
+            $sess='error_pass';
+        }
+
+        
+        return back()->with($sess,$msg);
+        
+    }
 }

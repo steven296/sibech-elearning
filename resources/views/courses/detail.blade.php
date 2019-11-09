@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     @if (session('success'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success alert-course">
                             {{session('success')}}
                         </div>   
                     @endif

@@ -32,19 +32,33 @@
         </div>
 
         <div class="col-lg-9">
+            @if (session('succes_pass'))
+                <div class="alert alert-success alert-pass">
+                    {{session('succes_pass')}}
+                </div>
+            @else
+                @if (session('error_pass'))
+                    <div class="alert alert-danger alert-pass">
+                        {{session('error_pass')}}
+                    </div>
+                @endif  
+            @endif
+            
+            
             <div class="box_general padding_bottom">
                 <div class="header_box version_2 mb-4">
                     <h4><i class="icon-lock"></i>Cambia tu Contraseña</h4>
                 </div>
                 <div class="row">
                     <div class="col-md-12 add_top_10">
-                        <form action="#" method="POST">
+                        <form action="{{route('perfil.update',auth()->user()->id)}}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="email" class="form-control" value="{{ auth()->user()->email }}" disabled>
+                                            <input required type="email" class="form-control" value="{{ auth()->user()->email }}" disabled>
                                         </div>
                                     </div>
                             </div>
@@ -53,14 +67,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Contraseña</label>
-                                        <input type="password" class="form-control">
+                                        <input type="password" name="password" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Confirmar Contraseña</label>
-                                        <input type="password" class="form-control">
+                                        <input required type="password" name="confirm_password" class="form-control">
                                     </div>
                                 </div>
                             </div>

@@ -44,5 +44,6 @@ Route::get('/mis-cursos/{id}','CourseController@misCursos')->name('cursos.misCur
 Route::group(['prefix' => 'perfil'], function(){
 	Route::get('/','ProfileController@index')->name('perfil.index');
 	Route::get('/edit','ProfileController@edit')->name('perfil.edit');
+	Route::put('/update/{id}','ProfileController@update')->name('perfil.update');
 });
 
