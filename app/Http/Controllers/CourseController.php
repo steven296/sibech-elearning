@@ -59,7 +59,7 @@ class CourseController extends Controller
       ->join('teachers','teacher_id','teachers.id')
       ->where('teachers.user_id',$id)->get();
       
-      return view('courses.mis-cursos',compact('categories','courses'));
+      return view('courses.cursos-por-mi',compact('categories','courses'));
     }
     
     public function misCursos(Course $course, $id){ //falta cambiar
@@ -69,8 +69,10 @@ class CourseController extends Controller
 
         
       $courses = Course::with('category','teacher','reviews')
-      ->join('teachers','teacher_id','teachers.id')
-      ->where('teachers.user_id',$id)->get();
+      ->join('course_student','id','course_student.course_id')
+      ->join('students','student_id','students.id')
+      ->where('students.user_id',$id)
+      ->get();
       
       return view('courses.mis-cursos',compact('categories','courses'));
 
@@ -82,17 +84,6 @@ class CourseController extends Controller
       $curso = Course::find($id);
       return view('courses.process',compact('categories','curso'));
     }
-
-
-    public function subscribed () {
-    
-      $categories = Category::withCount(['courses'])
-        ->latest()
-        ->get();
-
-		  return view('courses.subscribed', compact('categories'));
-    }
-
     
     
 }

@@ -58,7 +58,7 @@ class CoursePolicy
     
     public function view(User $user, Course $course)
     {
-        return $user->teacher || $user->teacher->id==$course->teacher_id;       
+        return  $user->teacher && $user->teacher->id == $course->teacher_id;      
     }
 
 }

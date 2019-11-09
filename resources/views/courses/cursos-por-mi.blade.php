@@ -40,10 +40,15 @@
                 <div class="col-lg-12">
                     <div class="box_grid wow">
                         <div class="wrapper">
-                        <h4><i class="icon_info_alt mr-2"></i> No tienes ningún curso comprado</h4></div>
+                        <h4><i class="icon_info_alt mr-2"></i> No hay ningun curso registrado</h4></div>
                     </div>
                 </div>
+                <div class="row  ml-3">
+                    <button class="btn btn-primary"><a href="#" class="text-white">Crear Curso</a></button>
+                </div>
             </div>
+            
+            
         @endforelse
     </div>
 </div>

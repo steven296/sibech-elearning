@@ -1,5 +1,5 @@
 @auth
-    @can('view', $tema)
+    @can('view', $curso)
         @foreach($tema->lessons as $lesson)
             <li><a href="{{ $lesson->video }}" class="video">{{ $lesson->name }}</a><span>00:59</span></li>
         @endforeach
