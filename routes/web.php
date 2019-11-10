@@ -28,22 +28,20 @@ Route::get('/storage/{path}/{attachment}', function($path, $attachment) {
 
 
 Route::group(['prefix' => 'cursos'], function () {
-
-	Route::get('/suscripcion', 'CourseController@subscribed')->name('cursos.subscribed');
 	Route::get('/{categoria}', 'CourseController@index')->name('cursos.index');
 	Route::get('/{course}/inscripcion', 'CourseController@inscribe')->name('cursos.inscribe');
 	Route::get('/mis-cursos-creados/{id}','CourseController@cursosPorMi')->name('cursos.show');
 });
-Route::post('/curso/{id}/pay','BuyController@store')->name('pay.store');
-Route::get('mis-suscripciones/{id}','SubscriptionController@show')->name('subscription.show');
-Route::get('/curso/{curso}', 'CourseController@show')->name('curso.show');
-Route::get('/curso/{id}/comprar/','CourseController@process')->name('cursos.process');
-Route::get('/mis-cursos/{id}','CourseController@misCursos')->name('cursos.misCursos');
+
+Route::post('/curso/{id}/pay','BuyController@store')->name('pay.store')->middleware('auth');
+Route::get('/curso/{curso}', 'CourseController@show')->name('curso.show')->middleware('auth');
+Route::get('/curso/{id}/comprar/','CourseController@process')->name('cursos.process')->middleware('auth');
+Route::get('/mis-cursos/{id}','CourseController@misCursos')->name('cursos.misCursos')->middleware('auth');
 
 
 Route::group(['prefix' => 'perfil'], function(){
-	Route::get('/','ProfileController@index')->name('perfil.index');
-	Route::get('/edit','ProfileController@edit')->name('perfil.edit');
-	Route::put('/update/{id}','ProfileController@update')->name('perfil.update');
+	Route::get('/','ProfileController@index')->name('perfil.index')->middleware('auth');
+	Route::get('/edit','ProfileController@edit')->name('perfil.edit')->middleware('auth');
+	Route::put('/update/{id}','ProfileController@update')->name('perfil.update')->middleware('auth');
 });
 
