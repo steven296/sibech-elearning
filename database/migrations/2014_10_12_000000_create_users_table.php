@@ -43,8 +43,7 @@ class CreateUsersTable extends Migration
 
         Schema::create('bitacora',function (Blueprint $table){
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('user');
             $table->string('operacion');
             $table->string('tabla');
             $table->timestamp('fecha_accion')->nullable();
