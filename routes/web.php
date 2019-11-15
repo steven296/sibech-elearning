@@ -45,3 +45,7 @@ Route::group(['prefix' => 'perfil'], function(){
 	Route::put('/update/{id}','ProfileController@update')->name('perfil.update')->middleware('auth');
 });
 
+Route::group(['prefix'=>'dash','namespace'=>'Admin'],function(){
+	Route::get('/','HomeController@index')->name('admin.index');
+});
+
