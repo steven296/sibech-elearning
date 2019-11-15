@@ -34,7 +34,7 @@ Route::group(['prefix' => 'cursos'], function () {
 });
 
 Route::post('/curso/{id}/pay','BuyController@store')->name('pay.store')->middleware('auth');
-Route::get('/curso/{curso}', 'CourseController@show')->name('curso.show')->middleware('auth');
+Route::get('/curso/{curso}', 'CourseController@show')->name('curso.show');
 Route::get('/curso/{id}/comprar/','CourseController@process')->name('cursos.process')->middleware('auth');
 Route::get('/mis-cursos/{id}','CourseController@misCursos')->name('cursos.misCursos')->middleware('auth');
 

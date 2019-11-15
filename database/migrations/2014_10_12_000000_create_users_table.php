@@ -41,10 +41,20 @@ class CreateUsersTable extends Migration
 	        $table->timestamps();
         });
 
+        Schema::create('auditoria_user',function(Blueprint $table){
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamp('fecha')->nullable();
+            $table->string('dato_nuevo');
+            $table->string('dato_anterior');
+        });
+
         Schema::create('bitacora',function (Blueprint $table){
             $table->increments('id');
             $table->unsignedInteger('user');
-            $table->string('operacion');
+            $table->string('dato');
+            $table->string('accion');
             $table->string('tabla');
             $table->timestamp('fecha_accion')->nullable();
         });		
