@@ -54,11 +54,7 @@
             @endforeach
             
         </div>
-        <!--
-        <div class="container">
-            <p class="btn_home_align"><a href="#" class="btn_1 rounded">Ver todos los cursos</a></p>
-        </div>
-        -->
+        
         <hr>
     </div>
     <!-- /container -->

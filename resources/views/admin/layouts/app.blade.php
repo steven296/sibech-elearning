@@ -5,25 +5,31 @@
         @include('admin.layouts.includes.head')
     </head>
 
-    <body>
-            
-        <div id="page">
+    <body class="fixed-nav sticky-footer" id="page-top">
 
-        <!-- header -->
-        @include('admin.partials.header')
-
+        <!-- header y sidenav -->
+        @include('admin.partials.navigation')
 
         <!-- Contenido -->
-        <main>
-            @include('admin.partials.sidenav')
+        <div class="content-wrapper">
+            <div class="container-fluid">
 
+                <ol class="breadcrumb">
+                    @yield('breadcrumbs')
+                </ol>
+            
+                @yield('content')
 
-            @yield('content')
-        </main>
-
+            </div>
         </div>
-        <!-- page -->
-        
+        <!-- /.container-wrapper-->
+
+        @include('admin.partials.footer')
+
+
+        <!-- Modal para Cerrar Sesion -->
+        @include('admin.layouts.includes.modal')
+
         @include('admin.layouts.includes.foot')
         
     </body>

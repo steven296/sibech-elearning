@@ -45,6 +45,11 @@ Route::group(['prefix' => 'perfil', 'middleware' => 'auth'], function(){
 	Route::put('/update/{id}','ProfileController@update')->name('perfil.update');
 });
 
-Route::group(['prefix' => 'dash', 'namespace' => 'Admin'], function(){
+Route::group(['prefix' => 'dash', 'namespace' => 'Admin', 'middleware' => 'admin'], function(){
 	Route::get('/','HomeController@index')->name('admin.index');
+
+	Route::group(['prefix' => 'cursos'], function(){
+		Route::get('/','CourseController@index')->name('admin.cursos.index');
+		Route::get('/create','CourseController@create')->name('admin.cursos.create');
+	});
 });
