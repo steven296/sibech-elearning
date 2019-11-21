@@ -39,10 +39,10 @@ Route::get('/curso/{id}/comprar/','CourseController@process')->name('cursos.proc
 Route::get('/mis-cursos/{id}','CourseController@misCursos')->name('cursos.misCursos')->middleware('auth');
 
 
-Route::group(['prefix' => 'perfil', 'middleware' => 'auth'], function(){
-	Route::get('/','ProfileController@index')->name('perfil.index');
-	Route::get('/edit','ProfileController@edit')->name('perfil.edit');
-	Route::put('/update/{id}','ProfileController@update')->name('perfil.update');
+Route::group(['prefix' => 'perfil'], function(){
+	Route::get('/','ProfileController@index')->name('perfil.index')->middleware('auth');
+	Route::get('/edit','ProfileController@edit')->name('perfil.edit')->middleware('auth');
+	Route::put('/update/{id}','ProfileController@update')->name('perfil.update')->middleware('auth');
 });
 
 Route::group(['prefix' => 'dash', 'namespace' => 'Admin', 'middleware' => 'admin'], function(){

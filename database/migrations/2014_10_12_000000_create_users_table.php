@@ -30,15 +30,31 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password')->nullable();
 	        $table->string('picture')->nullable();
+
+	        //cashier columns
+	        // $table->string('stripe_id')->nullable();
+	        // $table->string('card_brand')->nullable();
+	        // $table->string('card_last_four')->nullable();
+	        // $table->timestamp('trial_ends_at')->nullable();
+
 	        $table->rememberToken();
 	        $table->timestamps();
         });
 
-        Schema::create('bitacora',function (Blueprint $table){
+        Schema::create('auditoria_user',function(Blueprint $table){
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('operacion');
+            $table->timestamp('fecha')->nullable();
+            $table->string('dato_nuevo');
+            $table->string('dato_anterior');
+        });
+
+        Schema::create('bitacora',function (Blueprint $table){
+            $table->increments('id');
+            $table->unsignedInteger('user');
+            $table->string('dato');
+            $table->string('accion');
             $table->string('tabla');
             $table->timestamp('fecha_accion')->nullable();
         });		
