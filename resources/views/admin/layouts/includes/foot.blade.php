@@ -38,6 +38,12 @@
 		newElem.appendTo('table.class-list-container');
 	}
 	
+	function newMenuItemMetas() {		//añade un item, para una nueva clase
+	    var count_item = $("table.class-list-container"+" tr").length;
+	    count_item=count_item+1;
+		var newElem = $('<tr class="class-list-item"><td><div class="row"><div class="col-md-11"><div class="form-group"><input type="text" class="form-control" placeholder="Nombre de la meta" name="meta'+count_item+'"></div></div><div class="col-md-1"><div class="form-group" align="center"><a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a></div></div></div></td></tr>');
+		newElem.appendTo('table.class-list-container');
+	}
 
 		$('#box_section').on('click', '.add-class-list-item', function (e) { 
 			e.preventDefault();
@@ -52,6 +58,13 @@
 			newMenuItemRequirement();
 			
 		});
+
+		$('#box-metas').on('click', '.add-class-list-item', function (e) { 
+			e.preventDefault();
+			var indice_seccion = $(this).attr("id");
+			newMenuItemRequirement();
+			
+		});		
 	
 		$(document).on("click", ".delete", function (e) {  // si se borra un item
 			e.preventDefault();

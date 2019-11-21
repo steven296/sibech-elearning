@@ -20,6 +20,8 @@
 	  	@include('admin.partials.courses.informacion-curso')
 
 		@include('admin.partials.courses.requerimentos-cursos')
+		
+		@include('admin.partials.courses.metas-cursos')
 
 	  	@include('admin.partials.courses.categoria-curso')
 
