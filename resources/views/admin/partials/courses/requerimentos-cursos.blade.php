@@ -6,13 +6,13 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Nombre del requirimiento</label>
-                <table class="class-list-container" style="width:100%;">
+                <table class="class-list-container" style="width:100%;" id="table-requirements">
                     <tr class="class-list-item">
                         <td>
                         <div class="row">
                             <div class="col-md-11">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nombre de la clase" name="requirements1">
+                                <input type="text" class="form-control" placeholder="Nombre de la clase" name="requirement-1">
                             </div>
                             </div>
                             <div class="col-md-1">

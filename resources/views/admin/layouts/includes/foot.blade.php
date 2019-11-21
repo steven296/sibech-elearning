@@ -32,18 +32,23 @@
 	}
 
 	function newMenuItemRequirement() {		//añade un item, para una nueva clase
-        var count_item = $("table.class-list-container"+" tr").length;
-        count_item=count_item+1;
-		var newElem = $('<tr class="class-list-item"><td><div class="row"><div class="col-md-11"><div class="form-group"><input type="text" class="form-control" placeholder="Nombre de la clase" name="requirements'+count_item+'"></div></div><div class="col-md-1"><div class="form-group" align="center"><a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a></div></div></div></td></tr>');
-		newElem.appendTo('table.class-list-container');
+        var count_requ = $("table#table-requirements"+" tr").length;
+        count_requ=count_requ+1;
+		var newElem = $('<tr class="class-list-item"><td><div class="row"><div class="col-md-11"><div class="form-group"><input type="text" class="form-control" placeholder="Nombre de la clase" name="requirement-'+count_requ+'"></div></div><div class="col-md-1"><div class="form-group" align="center"><a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a></div></div></div></td></tr>');
+		newElem.appendTo('table#table-requirements');
 	}
 	
 	function newMenuItemMetas() {		//añade un item, para una nueva clase
-	    var count_item = $("table.class-list-container"+" tr").length;
-	    count_item=count_item+1;
-		var newElem = $('<tr class="class-list-item"><td><div class="row"><div class="col-md-11"><div class="form-group"><input type="text" class="form-control" placeholder="Nombre de la meta" name="meta'+count_item+'"></div></div><div class="col-md-1"><div class="form-group" align="center"><a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a></div></div></div></td></tr>');
-		newElem.appendTo('table.class-list-container');
+	    var count_goal = $("table#table-goals"+" tr").length;
+	    count_goal=count_goal+1;
+		var newElem = $('<tr class="class-list-item"><td><div class="row"><div class="col-md-11"><div class="form-group"><input type="text" class="form-control" placeholder="Nombre de la meta" name="meta-'+count_goal+'"></div></div><div class="col-md-1"><div class="form-group" align="center"><a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a></div></div></div></td></tr>');
+		newElem.appendTo('table#table-goals');
 	}
+
+		$('.add-section-list-item').on('click', function (e) { 
+			e.preventDefault();
+			newMenuSection();
+		});
 
 		$('#box_section').on('click', '.add-class-list-item', function (e) { 
 			e.preventDefault();
@@ -54,15 +59,13 @@
 		
 		$('#box-requirements').on('click', '.add-class-list-item', function (e) { 
 			e.preventDefault();
-			var indice_seccion = $(this).attr("id");
 			newMenuItemRequirement();
 			
 		});
 
 		$('#box-metas').on('click', '.add-class-list-item', function (e) { 
 			e.preventDefault();
-			var indice_seccion = $(this).attr("id");
-			newMenuItemRequirement();
+			newMenuItemMetas();
 			
 		});		
 	
@@ -71,9 +74,6 @@
 			$(this).parent().parent().parent().remove();
 		});
 
-		$('.add-section-list-item').on('click', function (e) { 
-			e.preventDefault();
-			newMenuSection();
-		});
+		
 
 </script>

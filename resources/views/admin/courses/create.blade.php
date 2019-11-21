@@ -27,7 +27,7 @@
 
       	@include('admin.partials.courses.seccion-clase')
 
-		<input type="submit" class="btn btn-primary form-control" placeholder="Enviar">
+		<input type="submit" class="btn btn-primary form-control mt-3" placeholder="Enviar">
     </form>
 </div>
 
