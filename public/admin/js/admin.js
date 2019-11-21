@@ -66,6 +66,7 @@
   $(".selectbox").selectbox();
   
   // Pricing add
+  /*
 	function newMenuItem() {
 		var newElem = $('tr.pricing-list-item').first().clone();
 		newElem.find('input').val('');
@@ -80,6 +81,6 @@
 			e.preventDefault();
 			$(this).parent().parent().parent().remove();
 		});
-	}
+  }*/
 	
 })(jQuery); // End of use strict

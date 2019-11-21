@@ -51,5 +51,6 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Admin', 'middleware' => 'admin
 	Route::group(['prefix' => 'cursos'], function(){
 		Route::get('/','CourseController@index')->name('admin.cursos.index');
 		Route::get('/create','CourseController@create')->name('admin.cursos.create');
+		Route::post('/store','CourseController@store')->name('admin.cursos.store');
 	});
 });

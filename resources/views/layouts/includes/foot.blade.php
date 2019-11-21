@@ -7,6 +7,7 @@
 <script src="{{ asset('js/modernizr_tables.js') }}"></script>
 <script src="{{ asset('js/tables_func.js') }}"></script>
 <script>
+
     $(document).ready(function(){
         setTimeout(function(){
             $(".alert-course").fadeOut(1500);
@@ -18,4 +19,6 @@
             $(".alert-pass").fadeOut(1500);
         },3000);
     });
+
+    
 </script>
