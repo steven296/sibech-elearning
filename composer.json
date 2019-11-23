@@ -12,7 +12,9 @@
         "fideloper/proxy": "^4.0",
         "laravel/cashier": "^10.4",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/socialite": "^4.3",
+        "laravel/tinker": "^1.0",
+        "unisharp/laravel-ckeditor": "^4.7"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

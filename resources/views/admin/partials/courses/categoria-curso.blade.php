@@ -13,20 +13,28 @@
     <!-- /row-->
     <div class="row">
         <div class="col-md-12">
-        <div class="form-group">
-            <label for="exampleFormControlSelect1">Categoria</label>
-            <select class="form-control" name="category_id"id="exampleFormControlSelect1">
-                @foreach ($categories as $category )
-                    <option value="{{$category->id}}">{{$category->name}}</option>
-                @endforeach
-            </select>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Categoria</label>
+                <select class="form-control" name="category_id" id="exampleFormControlSelect1">
+                    @foreach ($categories as $category )
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
             </div>
-            {{-- <div class="form-group">
-                <label>Categoria <a href="#0" data-toggle="tooltip" data-placement="top" title="Separados por comas"><i class="fa fa-fw fa-question-circle"></i></a></label>
-                <input type="text" class="form-control" placeholder="selecciona" name="category_id">
-            </div> --}}
         </div>
     </div>
     <!-- /row-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Nivel</label>
+                <select class="form-control" name="level_id" id="exampleFormControlSelect1">
+                    @foreach ($levels as $level )
+                        <option value="{{$level->id}}">{{$level->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- /box_general-->

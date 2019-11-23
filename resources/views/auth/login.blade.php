@@ -20,9 +20,12 @@
                     @csrf
 
                     <div class="access_social">
-                        <a href="#0" class="social_bt facebook">Facebook</a>
+                        {{-- <a href="#0" class="social_bt facebook">Facebook</a> --}}
+                        <a href="{{route('social_auth',['driver'=>'google'])}}" class="social_bt google">Google</a>
+                        <a href="{{route('social_auth',['driver'=>'github'])}}" class="social_bt linkedin">Github</a>
                     </div>
-                    <div class="divider"><span>O</span></div>
+                    
+                    <hr>
 
                     <div class="form-group">
                         <span class="input">

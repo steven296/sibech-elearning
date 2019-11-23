@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-md-11">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nombre de la clase" name="requirement-1">
+                                <input type="text" class="form-control" placeholder="Nombre de la clase" name="requirement[]">
                             </div>
                             </div>
                             <div class="col-md-1">

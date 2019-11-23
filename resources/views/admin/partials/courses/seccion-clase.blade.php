@@ -3,7 +3,7 @@
 <div class="box_general padding_bottom">
     <div class="header_box version_2">
     <h2><i class="fa fa-video-camera"></i> Seccion 1</h2>
-    <input type="text" class="form-control" placeholder="Nombre de la seccion" name="seccion-1">
+    <input type="text" class="form-control" placeholder="Nombre de la seccion" name="seccion[]">
     </div>
     <div class="row">
     <div class="col-md-12">
@@ -14,12 +14,12 @@
             <div class="row">
                 <div class="col-md-4">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nombre de la clase" name="clase-11">
+                    <input type="text" class="form-control" placeholder="Nombre de la clase" name="clase[0][]">
                 </div>
                 </div>
                 <div class="col-md-7">
                 <div class="form-group">
-                    <input type="text" class="form-control"  placeholder="URL de la clase" name="url-11">
+                    <input type="text" class="form-control"  placeholder="URL de la clase" name="url[0][]">
                 </div>
                 </div>
                 <div class="col-md-1">
