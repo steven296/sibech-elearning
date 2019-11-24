@@ -109,7 +109,7 @@
                             
                             <div class="col-lg-8">
                                 <div class="indent_title_in">
-                                    <h3>{{ $teacher->user->name }}</h3>
+                                    <h3><a href="{{ route('teacher.show', $teacher) }}">{{ $teacher->user->name }}</a> </h3>
                                     <p>{{ $teacher->title }}</p>
                                 </div>
                                 <div class="wrapper_indent">
@@ -224,7 +224,7 @@
                                                 @include('partials.courses.rating', ['rating' => $review->rating])
                                         </div>
                                         <div class="rev-info">
-                                            {{ $review->user->name }} – {{ $review->created_at->format('d/m/Y') }}:
+                                            {{ $review->user->name }} – {{ $review->created_at->format('Y/m/d') }}:
                                         </div>
                                         <div class="rev-text">
                                             <p>

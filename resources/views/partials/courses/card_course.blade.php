@@ -7,7 +7,7 @@
     </figure>
     <div class="wrapper">
         <h6>{{ $course->name }}</h6>
-        <small>{{ $course->teacher->user->name }}</small>
+        <small>{{ $instructor }}</small>
         <div class="row justify-content-center">
             @include('partials.courses.rating', ['rating' => $course->custom_rating])<span class="pl-2">{{ round($course->custom_rating, 1) }} ({{ $course->count_rating }})</span>
         </div>

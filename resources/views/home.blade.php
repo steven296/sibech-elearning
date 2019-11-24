@@ -48,7 +48,7 @@
             @foreach($courses as $course)
                 <div class="item">
 
-                    @include('partials.courses.card_course')
+                    @include('partials.courses.card_course' , ['instructor' => $course->teacher->user->name])
                     
                 </div>
             @endforeach

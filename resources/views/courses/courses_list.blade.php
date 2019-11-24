@@ -51,7 +51,7 @@
 
                 <div class="col-xl-3 col-lg-4 col-md-6">
 
-                    @include('partials.courses.card_course')
+                    @include('partials.courses.card_course', ['instructor' => $course->teacher->user->name])
                     
                 </div>
 

@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-
+        Unisharp\Ckeditor\ServiceProvider::class,
     ],
 
     /*
