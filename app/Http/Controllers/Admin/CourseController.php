@@ -16,8 +16,8 @@ use App\Teacher;
 class CourseController extends Controller
 {
     public function index() {
-        
-        return view('admin.courses.index');
+        $courses = Course::paginate(12);
+        return view('admin.courses.index',compact('courses'));
     }
 
     public function create() {

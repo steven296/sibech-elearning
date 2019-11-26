@@ -16,11 +16,11 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
 	        $table->unsignedInteger('teacher_id');
-	        $table->foreign('teacher_id')->references('id')->on('teachers');
+	        $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
 	        $table->unsignedInteger('category_id');
-	        $table->foreign('category_id')->references('id')->on('categories');
+	        $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 	        $table->unsignedInteger('level_id');
-	        $table->foreign('level_id')->references('id')->on('levels');
+	        $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
 	        $table->string('name');
 	        $table->text('description');
             $table->string('slug');
