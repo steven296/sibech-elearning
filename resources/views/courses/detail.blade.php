@@ -212,9 +212,8 @@
                         </div>
 
                         <hr>
-
+                        
                         <div class="reviews-container">
-
                             @forelse($curso->reviews as $review)
                                 <div class="review-box clearfix">
                                     <figure class="rev-thumb"><img src="{{ $review->user->pathAttachment() }}" alt="" style="width:80px;">
@@ -238,6 +237,39 @@
                                     <span>No hay Comentarios</span>
                                 </div>
                             @endforelse
+                            @auth
+                                <form action="{{route('review.store')}}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="hidden" name="course_id" value="{{$curso->id}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Deja tu comentario</label>
+                                        <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="">Deja tu valoración</label>
+                                        <br>
+                                        Malo
+                                        &nbsp;
+                                        <input type="radio" name="rating" value="1">
+                                        &nbsp;
+                                        <input type="radio" name="rating" value="2">
+                                        &nbsp;
+                                        <input type="radio" name="rating" value="3">
+                                        &nbsp;
+                                        <input type="radio" name="rating" value="4">
+                                        &nbsp;
+                                        <input type="radio" name="rating" value="5">
+                                        &nbsp;
+                                        Bueno
+                                    </div>
+                                    
+                                    <button type="submit" class="mt-3 btn btn-primary">Comentar</button>
+                                </form>
+                            @endauth
+                            
                         </div>
                         <!-- /review-container -->
                     </section>

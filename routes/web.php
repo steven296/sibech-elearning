@@ -56,5 +56,6 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Admin', 'middleware' => 'admin
 		Route::post('/store','CourseController@store')->name('admin.cursos.store');
 	});
 });
+Route::post('/review/store','ReviewController@store')->name('review.store');
 
 Route::get('/instructor/{teacher}','TeacherController@show')->name('teacher.show');
