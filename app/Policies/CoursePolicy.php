@@ -61,4 +61,11 @@ class CoursePolicy
         return  $user->teacher && $user->teacher->id == $course->teacher_id;      
     }
 
+    public function comment(User $user,Course $course){
+        $user_id=auth()->user()->id;
+        $sql1 = DB::select("select count(course_student.course_id) as 'num' from students,course_student,courses where courses.id=? and course_student.course_id=courses.id and course_student.student_id=students.id and students.user_id=?",[$course->id,$user_id]);
+        
+        return ($user->teacher && $user->teacher->id == $course->teacher_id) || ($sql1[0]->num>0) || $user->role_id == Role::ADMIN;
+    }
+
 }

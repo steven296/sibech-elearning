@@ -238,6 +238,7 @@
                                 </div>
                             @endforelse
                             @auth
+                            @can('comment', $curso)
                                 <form action="{{route('review.store')}}" method="POST">
                                     @csrf
                                     <div class="form-group">
@@ -268,6 +269,8 @@
                                     
                                     <button type="submit" class="mt-3 btn btn-primary">Comentar</button>
                                 </form>
+                            @endcan
+                                
                             @endauth
                             
                         </div>
