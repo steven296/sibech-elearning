@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection as Collection;
+
 use App\Category;
 use App\Course;
 use App\Goal;
@@ -39,8 +42,6 @@ class CourseController extends Controller
         $course->picture=NULL;
         $course->status=1;
         $course->save();
-        
-
         
         $count = $request->meta;
         
@@ -81,8 +82,34 @@ class CourseController extends Controller
             }
         }
         
-
-        
         return view('admin.courses.index');
+    }
+
+    public function show($id){
+        $array_clases=array();
+        $array_clases1=array();
+        $course = Course::find($id);
+        $goals = Goal::where('course_id',$id)->get();
+        $requirements = Requirement::where('course_id',$id)->get();
+        $temas = Tema::where('course_id',$id)->get();
+        $categorias = Category::all();
+        $categories = Category::find($id);
+        $levels = Level::find($id);
+        $nivel = Level::all();
+        
+        foreach($temas as $tema){
+            $clases = Lesson::where('tema_id',$tema->id)->get();    
+            $array_clases=Arr::prepend($array_clases,$clases);
+        }
+        
+        
+        
+        
+        
+        return view('admin.courses.show',compact('array_clases','temas','categories','levels','categorias','nivel','course','goals','requirements'));
+    }
+
+    public function update(Request $request, $id){
+
     }
 }

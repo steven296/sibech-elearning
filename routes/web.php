@@ -51,6 +51,7 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Admin', 'middleware' => 'admin
 	Route::get('/','HomeController@index')->name('admin.index');
 
 	Route::group(['prefix' => 'cursos'], function(){
+		Route::get('/show/{id}','CourseController@show')->name('admin.cursos.show');
 		Route::get('/','CourseController@index')->name('admin.cursos.index');
 		Route::get('/create','CourseController@create')->name('admin.cursos.create');
 		Route::post('/store','CourseController@store')->name('admin.cursos.store');

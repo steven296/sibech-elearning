@@ -30,7 +30,7 @@
       <tr>
         <th scope="row">{{$course->id}}</th>
         <td><img width="80" src="{{ $course->pathAttachment() }}"></td>
-        <td>{{$course->name}}</td>
+        <td><a href="{{route('admin.cursos.show',$course->id)}}">{{$course->name}}</a></td>
         <td>{{str_limit($course->description,50)}}</td>
         <td>${{$course->price}}</td>
         <td>{{$course->teacher->user->name}}</td>
