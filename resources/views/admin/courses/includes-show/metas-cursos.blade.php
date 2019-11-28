@@ -13,6 +13,7 @@
                                 <div class="row">
                                     <div class="col-md-11">
                                     <div class="form-group">
+                                        <input type="hidden" name="goal_id[]" value="{{$goal->id}}">
                                         <input type="text" class="form-control" value="{{$goal->goal}}" placeholder="Nombre de las metas" name="meta[]">
                                     </div>
                                     </div>

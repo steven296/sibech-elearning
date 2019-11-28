@@ -127,20 +127,19 @@ class CourseController extends Controller
         }else{
             $course->picture=$request->get('imagen');    
         }
-        
-        
         $course->status=1;
+        $course->save();   
+
+        $count = $request->meta;
+        $id_goal=$request->goal_id;
         
-        $course->save();
-        
-        // $count = $request->meta;
-        
-        // for($i=0;$i<count($count);$i++){
-        //     $goals = Goal::where('course_id',$id);
-        //     $goals->course_id=$course->id;
-        //     $goals->goal=$request->meta[$i];
-        //     $goals->save();
-        // }
+        for($i=0;$i<count($count);$i++){
+            $goals = Goal::where('course_id',$id)->where('id',$id_goal[$i])->get();
+            $goals->goal=$request->meta[$i];
+            dd($goals);
+            $goals->save(); 
+            
+        }
         
         
         // $count_rq = $request->requirement;
