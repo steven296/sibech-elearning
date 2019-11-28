@@ -31,7 +31,8 @@
             <div class="form-group">
                 <label>Imagen del Curso</label>
                 <figure><img width="100" src="{{ $course->pathAttachment()}}"></figure>
-                <input type="file" class="form-control" name="picture">                
+                <input type="hidden" value="{{$course->picture}}" name="imagen">
+                <input type="file" class="form-control"  name="picture">                
             </div>
         </div>
     </div>

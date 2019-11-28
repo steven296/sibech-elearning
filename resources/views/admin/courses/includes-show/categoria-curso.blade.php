@@ -18,8 +18,9 @@
                 <select class="form-control" name="category_id" id="exampleFormControlSelect1">
                         {{-- <option value="{{$categories->id}}" selected>{{$categories->name}}</option> --}}
                         @foreach ($categorias as $item)
+                        
                             <option value="{{$item->id}}"
-                                @if ($item->id == $categories->id)
+                                @if ($item->id == $course->category_id)
                                     selected
                                 @endif
                             >
@@ -36,12 +37,12 @@
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Nivel</label>
                 <select class="form-control" name="level_id" id="exampleFormControlSelect1">
-                        @foreach ($nivel as $item)
+                        @foreach ($nivel as $item1)
                             <option value="{{$item->id}}"
-                                @if ($item->id==$levels->id)
+                                @if ($item1->id == $course->level_id)
                                     selected
                                 @endif>
-                                {{$item->name}}
+                                {{$item1->name}}
                             </option>
                         @endforeach
                         

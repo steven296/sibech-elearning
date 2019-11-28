@@ -10,8 +10,9 @@
 
 @section('content')
     <div class="container">
-        <form action="{{ route('admin.cursos.store') }}" method="post">
+        <form action="{{ route('admin.cursos.update',$course->id) }}" method="post">
             @csrf
+            @method('PUT')
     
             @include('admin.courses.includes-show.informacion-curso')
     

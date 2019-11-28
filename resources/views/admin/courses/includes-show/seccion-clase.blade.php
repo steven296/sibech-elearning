@@ -2,7 +2,7 @@
     @foreach ($temas as $tema)
         <div class="box_general padding_bottom">
             <div class="header_box version_2">
-                <h2><i class="fa fa-video-camera"></i> Seccion</h2>
+                <h2><i class="fa fa-video-camera"></i> Seccion {{$tema->id}}</h2>
                 <input type="text" class="form-control" value="{{$tema->name}}" placeholder="Nombre de la seccion" name="seccion[]">
             </div>
             
@@ -12,17 +12,18 @@
                     <table class="class-list-container-1" style="width:100%;">
                         <tr class="class-list-item">
                             <td>
-                                @foreach ($array_clases as $clase)
-                                    
+                                @foreach ($array_clases as $clases)
+                                    @foreach($clases as $item)
+                                        @if ($item->tema_id == $tema->id)                                      
                                         <div class="row">
                                             <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" value="{{$clase->name}} "placeholder="Nombre de la clase" name="clase[0][]">
+                                                <input type="text" class="form-control" value="{{$item->name}}" placeholder="Nombre de la clase" name="clase[0][]">
                                             </div>
                                             </div>
                                             <div class="col-md-7">
                                             <div class="form-group">
-                                                <input type="text" class="form-control"  placeholder="URL de la clase" name="url[0][]">
+                                                <input type="text" class="form-control" value="{{$item->video}}" placeholder="URL de la clase" name="url[0][]">
                                             </div>
                                             </div>
                                             <div class="col-md-1">
@@ -31,7 +32,8 @@
                                             </div>
                                             </div>
                                         </div> 
-                                        
+                                        @endif
+                                    @endforeach    
                                 @endforeach
                                 
                             </td>

@@ -87,29 +87,78 @@ class CourseController extends Controller
 
     public function show($id){
         $array_clases=array();
-        $array_clases1=array();
+        
         $course = Course::find($id);
         $goals = Goal::where('course_id',$id)->get();
         $requirements = Requirement::where('course_id',$id)->get();
         $temas = Tema::where('course_id',$id)->get();
         $categorias = Category::all();
-        $categories = Category::find($id);
-        $levels = Level::find($id);
         $nivel = Level::all();
         
         foreach($temas as $tema){
-            $clases = Lesson::where('tema_id',$tema->id)->get();    
+            $clases = Lesson::where('tema_id',$tema->id)->get();
             $array_clases=Arr::prepend($array_clases,$clases);
         }
         
-        
-        
-        
-        
-        return view('admin.courses.show',compact('array_clases','temas','categories','levels','categorias','nivel','course','goals','requirements'));
+        return view('admin.courses.show',compact('array_clases','temas','categorias','nivel','course','goals','requirements'));
     }
 
     public function update(Request $request, $id){
+        $course = Course::find($id);
+        $course->teacher_id=auth()->user()->id;
+        $course->category_id=$request->get('category_id');
+        $course->level_id=$request->get('level_id');
+        $course->name=$request->get('name');
+        $course->description=$request->get('description');
+        $course->slug=str_slug('-',$request->get('name'));
+        $course->price=$request->get('price');
+        if($request->get('imagen')){
+            $course->picture=$request->get('imagen');
+        }else{
+            $course->picture=$request->get('picture');
+        }
+        
+        $course->status=1;
+        $course->save();
+        
+        // $count = $request->meta;
+        
+        // for($i=0;$i<count($count);$i++){
+        //     $goals = Goal::where('course_id',$id);
+        //     $goals->course_id=$course->id;
+        //     $goals->goal=$request->meta[$i];
+        //     $goals->save();
+        // }
+        
+        
+        // $count_rq = $request->requirement;
+        // for($i=0;$i<count($count_rq);$i++){
+        //     $requirements = Requirement::where('course_id',$id);
+        //     $requirements->course_id=$course->id;
+        //     $requirements->requirement=$request->requirement[$i];
+        //     $requirements->save();
+        // }
 
+        // $count_tm = $request->seccion;
+        // $count_cl = $request->clase;
+        // $count_url = $request->url;
+        
+
+        // for($i=0;$i<count($count_tm);$i++){
+        //     $temas = Tema::where('course_id',$id);
+        //     $temas->course_id=$course->id;
+        //     $temas->name=$request->seccion[$i];
+        //     $temas->save();
+            
+        //     for($k=0;$k<count($count_cl);$k++){
+        //         $lesson = Lesson::where('tema_id',$temas->id);
+        //         $lesson->tema_id=$temas->id;
+        //         $lesson->name=$request->clase[$i][$k];
+        //         $lesson->description='hola mundo';
+        //         $lesson->video=$request->url[$i][$k];
+        //         $lesson->save();
+        //     }
+        // }    
+        return redirect('/dash/cursos');
     }
 }
