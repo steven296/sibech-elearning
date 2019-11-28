@@ -16,7 +16,7 @@ class CreateRequirementsTable extends Migration
         Schema::create('requirements', function (Blueprint $table) {
             $table->increments('id');
 	        $table->unsignedInteger('course_id');
-	        $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+	        $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
 	        $table->string('requirement');
             $table->timestamps();
         });

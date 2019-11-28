@@ -39,7 +39,13 @@ class CourseController extends Controller
         $course->description=$request->get('description');
         $course->slug=str_slug('-',$request->get('name'));
         $course->price=$request->get('price');
-        $course->picture=NULL;
+
+        if($request->hasFile('picture')){
+            $image = $request->file('picture');
+            $file = $image->store('courses');
+            $course->picture=$file;
+        }
+        
         $course->status=1;
         $course->save();
         
@@ -94,7 +100,7 @@ class CourseController extends Controller
         $temas = Tema::where('course_id',$id)->get();
         $categorias = Category::all();
         $nivel = Level::all();
-        
+    
         foreach($temas as $tema){
             $clases = Lesson::where('tema_id',$tema->id)->get();
             $array_clases=Arr::prepend($array_clases,$clases);
@@ -104,21 +110,27 @@ class CourseController extends Controller
     }
 
     public function update(Request $request, $id){
+        
         $course = Course::find($id);
-        $course->teacher_id=auth()->user()->id;
+        
+        $course->teacher_id=$request->get('teacher_id');
         $course->category_id=$request->get('category_id');
         $course->level_id=$request->get('level_id');
         $course->name=$request->get('name');
         $course->description=$request->get('description');
         $course->slug=str_slug('-',$request->get('name'));
         $course->price=$request->get('price');
-        if($request->get('imagen')){
-            $course->picture=$request->get('imagen');
+        if($request->hasFile('picture')){
+            $image = $request->file('picture');
+            $file = $image->store('courses');
+            $course->picture=$file;
         }else{
-            $course->picture=$request->get('picture');
+            $course->picture=$request->get('imagen');    
         }
         
+        
         $course->status=1;
+        
         $course->save();
         
         // $count = $request->meta;

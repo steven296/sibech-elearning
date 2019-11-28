@@ -15,6 +15,12 @@
                 <input type="text" class="form-control" placeholder="Precio del curso" value="{{$course->price}}" name="price">
             </div>
         </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label>Profesor</label>
+                <input type="text" class="form-control" placeholder="Nombre del profesor" value="{{$course->teacher_id}}" name="teacher_id">
+            </div>
+        </div>
     </div>
     <!-- /row-->
     {{-- <div class="row">

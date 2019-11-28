@@ -38,7 +38,7 @@
                 <label for="exampleFormControlSelect1">Nivel</label>
                 <select class="form-control" name="level_id" id="exampleFormControlSelect1">
                         @foreach ($nivel as $item1)
-                            <option value="{{$item->id}}"
+                            <option value="{{$item1->id}}"
                                 @if ($item1->id == $course->level_id)
                                     selected
                                 @endif>

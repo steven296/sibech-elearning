@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('role_id')->default(\App\Role::STUDENT);
-			$table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+			$table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
 	        $table->string('last_name')->nullable();
 	        $table->string('slug');
