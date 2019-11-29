@@ -91,7 +91,7 @@ class CourseController extends Controller
         return view('admin.courses.index');
     }
 
-    public function show($id){
+    public function edit($id){
         $array_clases=array();
         
         $course = Course::find($id);
@@ -106,7 +106,7 @@ class CourseController extends Controller
             $array_clases=Arr::prepend($array_clases,$clases);
         }
         
-        return view('admin.courses.show',compact('array_clases','temas','categorias','nivel','course','goals','requirements'));
+        return view('admin.courses.edit',compact('array_clases','temas','categorias','nivel','course','goals','requirements'));
     }
 
     public function update(Request $request, $id){

@@ -34,10 +34,10 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseCategory">
                     <li>
-                        <a href="#">Lista de Categorias</a>
+                        <a href="{{route('category.index')}}">Lista de Categorias</a>
                     </li>
                     <li>
-                        <a href="#">Nueva Categoria</a>
+                        <a href="{{route('category.create')}}">Nueva Categoria</a>
                     </li>
                 </ul>
             </li>

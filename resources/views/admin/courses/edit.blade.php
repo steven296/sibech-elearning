@@ -14,15 +14,15 @@
             @csrf
             @method('PUT')
     
-            @include('admin.courses.includes-show.informacion-curso')
+            @include('admin.courses.includes-edit.informacion-curso')
     
-            @include('admin.courses.includes-show.requerimentos-cursos')
+            @include('admin.courses.includes-edit.requerimentos-cursos')
             
-            @include('admin.courses.includes-show.metas-cursos')
+            @include('admin.courses.includes-edit.metas-cursos')
     
-            @include('admin.courses.includes-show.categoria-curso')
+            @include('admin.courses.includes-edit.categoria-curso')
     
-            @include('admin.courses.includes-show.seccion-clase')
+            @include('admin.courses.includes-edit.seccion-clase')
     
             <button type="submit" class="btn btn-primary form-control mt-3">Modificar</button>
         </form>
