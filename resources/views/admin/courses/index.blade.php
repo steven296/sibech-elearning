@@ -19,10 +19,9 @@
       <th scope="col">Profesor</th>
       <th scope="col">Categoria</th>
       <th scope="col">Nivel</th>
-      <th>Estudiantes</th>
+      <th scope="col" >Estudiantes</th>
       <th></th>
       <th></th>
-      
     </tr>
   </thead>
   <tbody>
@@ -36,10 +35,9 @@
         <td>{{$course->teacher->user->name}}</td>
         <td>{{$course->category->name}}</td>
         <td>{{$course->level->name}}</td>
-        <td>{{$course->getCountStudentsAttribute()}}</td>
-        <td><button class="btn btn-info">Editar</button></td>
-        <td><button class="btn btn-danger">Eliminar</button></td>
-        {{-- <td><a href="#">Ver Comentarios</a></td> --}}
+        <td align="center">{{$course->getCountStudentsAttribute()}}</td>
+        <td><button class="btn btn-danger">Deshabilitar</button></td>
+        <td><a href="#" class="btn btn-info">Ver comentarios</a></td>
       </tr>
     @endforeach
     
