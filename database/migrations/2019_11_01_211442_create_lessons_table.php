@@ -16,7 +16,7 @@ class CreateLessonsTable extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('tema_id');
-            $table->foreign('tema_id')->references('id')->on('temas')->onUpdate('cascade');
+            $table->foreign('tema_id')->references('id')->on('temas')->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('video');

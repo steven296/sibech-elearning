@@ -38,6 +38,30 @@ class CreateTriggersTable extends Migration
             $table->string('action');
             $table->timestamp('created_at');
         });
+        Schema::create('bitacora_category',function(Blueprint $table){
+            $table->increments('id');
+            $table->string('teacher_id_nuevo')->nullable();
+            $table->string('teacher_id_antiguo')->nullable();
+            $table->string('category_id_nuevo')->nullable();
+            $table->string('category_id_antiguo')->nullable();
+            $table->string('level_id_nuevo')->nullable();
+            $table->string('level_id_antiguo')->nullable();
+            $table->string('name_nuevo')->nullable();
+            $table->string('name_antiguo')->nullable();
+            $table->string('description_nuevo')->nullable();
+            $table->string('description_antiguo')->nullable();
+            $table->string('slug_nuevo')->nullable();
+            $table->string('slug_antiguo')->nullable();
+            $table->string('price_nuevo')->nullable();
+            $table->string('price_antiguo')->nullable();
+            $table->string('picture_nuevo')->nullable();
+            $table->string('picture_antiguo')->nullable();
+            $table->string('status_nuevo')->nullable();
+            $table->string('status_antiguo')->nullable();
+            $table->unsignedInteger('course_id');
+            $table->string('action');
+            $table->timestamp('created_at');
+        });
         
     }
 
