@@ -172,4 +172,13 @@ class CourseController extends Controller
         // }    
         return redirect('/dash/cursos');
     }
+
+    public function updateStatus(Request $request,$id){
+        $course = Course::find($id);
+        $course->status=$request->get('status');
+
+        $course->save();
+
+        return redirect('/dash/cursos');
+    }
 }

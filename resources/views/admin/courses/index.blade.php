@@ -8,41 +8,82 @@
 @endsection
 
 @section('content')
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Imagen</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Profesor</th>
-      <th scope="col">Categoria</th>
-      <th scope="col">Nivel</th>
-      <th scope="col" >Estudiantes</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach ($courses as $course)
-      <tr>
-        <th scope="row">{{$course->id}}</th>
-        <td><img width="80" src="{{ $course->pathAttachment() }}"></td>
-        <td><a href="{{route('admin.cursos.edit',$course->id)}}">{{$course->name}}</a></td>
-        <td>{{str_limit($course->description,50)}}</td>
-        <td>${{$course->price}}</td>
-        <td>{{$course->teacher->user->name}}</td>
-        <td>{{$course->category->name}}</td>
-        <td>{{$course->level->name}}</td>
-        <td align="center">{{$course->getCountStudentsAttribute()}}</td>
-        <td><button class="btn btn-danger">Deshabilitar</button></td>
-        <td><a href="#" class="btn btn-info">Ver comentarios</a></td>
-      </tr>
-    @endforeach
-    
-  </tbody>
-  
-</table>
+<div class="list_general">
+    <ul>
+      @foreach ($courses as $course)
+        <li>
+          <figure><img src="{{$course->pathAttachment()}}"></figure>
+
+          <h4>{{$course->name}}
+            @if ($course->status==1)
+            <i class="approved ">Publicado</i>
+            @elseif($course->status==2)
+            <i class="pending">Pendiente</i>
+            @elseif($course->status==3)
+            <i class="cancel ">Rechazado</i>
+            @endif</h4>
+          <ul class="course_list">
+            {{-- <li><strong>Start date</strong> 11 November 2017</li>
+            <li><strong>Expire date</strong> 11 April 2018</li> --}}
+            <li><strong>Category</strong> {{$course->category->name}}</li>
+            <li><strong>Teacher</strong> {{$course->teacher->user->name}}</li>
+          </ul>
+          <h6>Descripción</h6> 
+          <p class="text-justify">{{$course->description}}</p>
+          <a class="btn btn-info btn-sm" href="{{route('review.show',$course->id)}}">Ver comentarios</a>
+          <ul class="buttons">
+          @if ($course->status==1)
+            <form action="{{route('admin.cursos.updateStatus',$course->id)}}" method="post">
+                @csrf
+                @method('PUT') 
+                <input type="hidden" value="3" name="status">
+                <li>
+                  <button type="submit" class="btn_1 gray delete">
+                    <i class="fa fa-fw fa-times-circle-o"></i> Cancelar
+                  </button>
+                </li>
+                
+            </form>
+          @elseif($course->status==2)
+          <form action="{{route('admin.cursos.updateStatus',$course->id)}}" method="post">
+              @csrf
+              @method('PUT') 
+              <input type="hidden" value="1" name="status">
+              <li>
+                <button type="submit" class="btn_1 gray approve">
+                  <i class="fa fa-fw fa-check-circle-o"></i> Aprobar
+                </button>
+              </li>
+          </form>
+          <form action="{{route('admin.cursos.updateStatus',$course->id)}}" method="post">
+              @csrf
+              @method('PUT') 
+              <input type="hidden" value="3" name="status">
+              <li class="mt-2">
+                <button type="submit" class="btn_1 gray delete">
+                  <i class="fa fa-fw fa-times-circle-o"></i> Cancelar
+                </button>
+              </li>
+          </form>
+          @elseif($course->status==3)
+            <form action="{{route('admin.cursos.updateStatus',$course->id)}}" method="post">
+                @csrf
+                @method('PUT') 
+                <input type="hidden" value="1" name="status">
+                <li>
+                  <button type="submit" class="btn_1 gray approve">
+                    <i class="fa fa-fw fa-check-circle-o"></i> Aprobar
+                  </button>
+                </li>
+            </form>
+          @endif
+          
+            
+          </ul>
+        </li>
+      @endforeach
+      
+    </ul>
+  </div>
 {{ $courses->links() }}
 @endsection

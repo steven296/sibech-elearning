@@ -16,11 +16,14 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
 	        $table->unsignedInteger('course_id');
-	        $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null')->onUpdate('cascade');
+	        $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
 	        $table->unsignedInteger('user_id');
-	        $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+	        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 	        $table->integer('rating');
-	        $table->text('comment')->nullable();
+            $table->text('comment')->nullable();
+            $table->enum('status', [
+	        	\App\Review::PUBLISHED, \App\Review::REJECTED
+	        ])->default(\App\Review::PUBLISHED);
             $table->timestamps();
         });
     }

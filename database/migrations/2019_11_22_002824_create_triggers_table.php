@@ -38,7 +38,7 @@ class CreateTriggersTable extends Migration
             $table->string('action');
             $table->timestamp('created_at');
         });
-        Schema::create('bitacora_category',function(Blueprint $table){
+        Schema::create('bitacora_courses',function(Blueprint $table){
             $table->increments('id');
             $table->string('teacher_id_nuevo')->nullable();
             $table->string('teacher_id_antiguo')->nullable();
@@ -72,6 +72,8 @@ class CreateTriggersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('bitacora_user');
+        Schema::dropIfExists('bitacora_category');
         Schema::dropIfExists('bitacora_user');
     }
 }
