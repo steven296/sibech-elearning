@@ -36,15 +36,17 @@
                         <h4>{{ $review->user->name }}</h4>
                         
                         <p>{{$review->comment}}</p>
-                        <p class="inline-popups"><a href="#" data-effect="mfp-zoom-in" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-eraser"></i> Eliminar Comentario</a></p>
+                        <form action="{{route('review.destroy',$review->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <p class="inline-popups"><button type="submit" data-effect="mfp-zoom-in" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-eraser"></i> Eliminar Comentario</button></p>
+                        </form>    
                     </li>
                 @empty
                     <li><span>No hay comentarios para este curso</span><li>
                 @endforelse
             </ul>
-            
         </div>
-        
     </div>
     {{$reviews->links()}}
     <!-- /box_general-->
