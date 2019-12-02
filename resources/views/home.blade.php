@@ -46,11 +46,12 @@
         <div id="reccomended" class="owl-carousel owl-theme">
             <!-- Courses -->
             @foreach($courses as $course)
-                <div class="item">
-
-                    @include('partials.courses.card_course' , ['instructor' => $course->teacher->user->name])
-                    
-                </div>
+               
+                    <div class="item">
+                        @include('partials.courses.card_course' , ['instructor' => $course->teacher->user->name])
+                    </div>
+             
+                
             @endforeach
             
         </div>

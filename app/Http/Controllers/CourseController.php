@@ -28,7 +28,8 @@ class CourseController extends Controller
     public function index (Category $categoria) {
       
       $courses = Course::with('category', 'teacher', 'reviews')
-		    ->where('category_id', $categoria->id)
+        ->where('category_id', $categoria->id)
+        ->where('status',1)
 		    ->latest()
         ->paginate(12);
       

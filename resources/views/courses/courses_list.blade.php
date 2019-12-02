@@ -48,14 +48,13 @@
         <div class="row">
             <!-- Courses -->
             @forelse($courses as $course)
-
-                <div class="col-xl-3 col-lg-4 col-md-6">
-
-                    @include('partials.courses.card_course', ['instructor' => $course->teacher->user->name])
-                    
-                </div>
-
+                
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        @include('partials.courses.card_course', ['instructor' => $course->teacher->user->name])
+                    </div>
+                
             @empty
+                    
                 <div class="col-lg-12">
                     <div class="box_grid wow">
                         <div class="wrapper">

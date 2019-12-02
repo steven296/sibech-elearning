@@ -14,7 +14,7 @@
         <li>
           <figure><img src="{{$course->pathAttachment()}}"></figure>
 
-          <h4>{{$course->name}}
+          <h4><a href="{{route('admin.cursos.edit',$course->id)}}">{{$course->name}}</a>
             @if ($course->status==1)
             <i class="approved ">Publicado</i>
             @elseif($course->status==2)
