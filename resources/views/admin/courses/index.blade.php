@@ -8,7 +8,28 @@
 @endsection
 
 @section('content')
-<div class="list_general">
+<div class="box_general">
+  <div class="header_box">
+    <h2 class="d-inline-block">Your Courses</h2>
+    <div class="filter mr-5">
+      <form action="{{route('admin.cursos.index')}}" method="get">
+        @csrf
+        <div class="input-group mr-5">
+            <select name="orderBy"class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+              <option value="" selected>Todos</option>
+              <option value="1">Publicados</option>
+              <option value="2">Pendientes</option>
+              <option value="3">Cancelados</option>
+            </select>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            </div>
+        </div>  
+      </form>
+      
+    </div>
+  </div>
+  <div class="list_general">
     <ul>
       @foreach ($courses as $course)
         <li>
@@ -27,6 +48,7 @@
             <li><strong>Expire date</strong> 11 April 2018</li> --}}
             <li><strong>Category</strong> {{$course->category->name}}</li>
             <li><strong>Teacher</strong> {{$course->teacher->user->name}}</li>
+            <li><strong>Fecha de creación</strong> {{$course->created_at->format('d/m/Y')}}</li>
           </ul>
           <h6>Descripción</h6> 
           <p class="text-justify">{{$course->description}}</p>
@@ -85,5 +107,6 @@
       
     </ul>
   </div>
+</div>
 {{ $courses->links() }}
 @endsection

@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id','status'];
+
+	const APPROVED = 1;
+	const REJECTED = 3;
+	const PENDING = 2;
 
 	public function courses () {
 		return $this->hasMany(Course::class);

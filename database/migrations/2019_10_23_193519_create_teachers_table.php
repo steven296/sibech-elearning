@@ -20,6 +20,9 @@ class CreateTeachersTable extends Migration
             $table->string('title')->nullable();
             $table->text('biography')->nullable();
             $table->string('website_url')->nullable();
+            $table->enum('status', [
+	        	\App\Teacher::APPROVED, \App\Teacher::PENDING, \App\Teacher::REJECTED
+	        ])->default(\App\Course::PENDING);
             $table->timestamps();
         });
     }

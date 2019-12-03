@@ -18,8 +18,9 @@ use App\Teacher;
 
 class CourseController extends Controller
 {
-    public function index() {
-        $courses = Course::paginate(12);
+    public function index(Request $request) {
+        // dd($request->get('orderBy'));
+        $courses = Course::status($request->get('orderBy'))->orderBy('created_at','desc')->paginate();
         return view('admin.courses.index',compact('courses'));
     }
 

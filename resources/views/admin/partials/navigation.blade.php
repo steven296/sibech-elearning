@@ -43,8 +43,8 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
                 <a class="nav-link" href="#">
-                <i class="fa fa-fw fa-star"></i>
-                <span class="nav-link-text">Comentarios</span>
+                <i class="fa fa-fw fa-bell"></i>
+                <span class="nav-link-text">Notificaciones</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">

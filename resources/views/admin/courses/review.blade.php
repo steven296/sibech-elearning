@@ -12,19 +12,19 @@
 <div class="box_general">
         <div class="header_box">
             <h2 class="d-inline-block">Lista de Comentarios del curso {{$course_name->name}}</h2>
-            {{-- <div class="filter">
+            <div class="filter">
                 <select name="orderby" class="selectbox">
                     <option value="Any time">Any time</option>
                     <option value="Latest">Latest</option>
                     <option value="Oldest">Oldest</option>
                 </select>
-            </div> --}}
+            </div>
         </div>
         <div class="list_general reviews">
             <ul>
                 @forelse ($reviews as $review)
                     <li>
-                        <span>{{$review->created_at->format('Y/m/d')}}</span>
+                        <span>{{$review->created_at->format('d/m/Y')}}</span>
                         <span class="rating">
                             <i class="fa fa-fw fa-star {{ $review->rating >= 1 ? ' yellow' : '' }}"></i>
                             <i class="fa fa-fw fa-star {{ $review->rating >= 2 ? ' yellow' : '' }}"></i>

@@ -129,4 +129,10 @@ class Course extends Model
 	public function getCountStudentsAttribute () {
 		return $this->students->count('name');
 	}
+
+	public function scopeStatus($query,$status){
+		if($status!=""){
+			$query->where('status',$status);
+		}
+	}
 }

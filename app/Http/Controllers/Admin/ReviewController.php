@@ -48,7 +48,7 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        $reviews = Review::where('course_id',$id)->paginate(6);
+        $reviews = Review::where('course_id',$id)->orderBy('created_at','desc')->paginate(6);
         $course_name = Course::where('id',$id)->get()->first();
         
         return view('admin.courses.review',compact('reviews','course_name'));
