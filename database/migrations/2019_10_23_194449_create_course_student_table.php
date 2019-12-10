@@ -21,6 +21,10 @@ class CreateCourseStudentTable extends Migration
             $table->string('num_operacion');
             $table->string('nombre_banco');
             $table->string('voucher')->nullable();
+            $table->enum('status', [
+	        	\App\CourseStudent::ACCEPTED, \App\CourseStudent::PENDING, \App\CourseStudent::REJECTED
+	        ])->default(\App\CourseStudent::PENDING);
+            $table->timestamps();
         });
     }
 

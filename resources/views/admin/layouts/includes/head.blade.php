@@ -23,5 +23,6 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!-- Plugin styles -->
 <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 <!-- Your custom styles -->
 <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">

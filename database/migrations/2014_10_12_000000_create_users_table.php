@@ -29,13 +29,10 @@ class CreateUsersTable extends Migration
 	        $table->string('slug');
             $table->string('email')->unique();
             $table->string('password')->nullable();
-	        $table->string('picture')->nullable();
-
-	        //cashier columns
-	        // $table->string('stripe_id')->nullable();
-	        // $table->string('card_brand')->nullable();
-	        // $table->string('card_last_four')->nullable();
-	        // $table->timestamp('trial_ends_at')->nullable();
+            $table->string('picture')->nullable();
+            $table->enum('status', [
+	        	\App\User::HABILITED, \App\User::DESHABILITED
+	        ])->default(\App\User::HABILITED);;
 
 	        $table->rememberToken();
 	        $table->timestamps();

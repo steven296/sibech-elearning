@@ -29,7 +29,7 @@ class CourseController extends Controller
       
       $courses = Course::with('category', 'teacher', 'reviews')
         ->where('category_id', $categoria->id)
-        ->where('status',1)
+        ->where('status',Course::PUBLISHED)
 		    ->latest()
         ->paginate(12);
       

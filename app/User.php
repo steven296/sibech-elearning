@@ -11,6 +11,9 @@ class User extends Authenticatable
 {
     use Notifiable,Billable;
 
+    const HABILITED = 1;
+    const DESHABILITED = 2;
+
     protected static function boot () {
 		parent::boot();
 		static::creating(function (User $user) {

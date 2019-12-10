@@ -22,7 +22,7 @@
               <option value="3">Cancelados</option>
             </select>
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+              <button class="btn btn-outline-secondary" type="submit">Filtrar</button>
             </div>
         </div>  
       </form>
@@ -48,6 +48,7 @@
             <li><strong>Expire date</strong> 11 April 2018</li> --}}
             <li><strong>Category</strong> {{$course->category->name}}</li>
             <li><strong>Teacher</strong> {{$course->teacher->user->name}}</li>
+            <li><strong>Precio</strong> ${{$course->price}}</li>
             <li><strong>Fecha de creación</strong> {{$course->created_at->format('d/m/Y')}}</li>
           </ul>
           <h6>Descripción</h6> 

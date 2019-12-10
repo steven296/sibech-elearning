@@ -1,20 +1,4 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
 Route::get('login/{driver}','Auth\LoginController@redirectToProvider')->name('social_auth');
 Route::get('login/{driver}/callback','Auth\LoginController@handleProviderCallback');
 Auth::routes();
@@ -60,6 +44,8 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Admin', 'middleware' => 'admin
 		Route::put('/updateStatus/{id}','CourseController@updateStatus')->name('admin.cursos.updateStatus');
 	});
 	Route::resource('category','CategoryController');
+	Route::resource('user','UserController');
+	Route::resource('notification','CourseStudentController');
 	
 });
 Route::post('/review/store','ReviewController@store')->name('review.store');

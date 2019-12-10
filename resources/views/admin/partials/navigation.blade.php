@@ -13,6 +13,13 @@
                 </a>
             </li>
 
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
+                <a class="nav-link"  href="{{route('user.index')}}">
+                <i class="fa fa-fw fa-user"></i>
+                <span class="nav-link-text">Usuarios</span>
+                </a>
+            </li>
+
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCourses" data-parent="#exampleAccordion">
                 <i class="fa fa-fw fa-archive"></i>
@@ -64,6 +71,41 @@
         </ul>
     
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-bell"></i>
+                    <span class="d-lg">Alerts
+                        @if (count($courseStudent)>0)
+                            <span class="badge badge-pill badge-warning">{{count($courseStudent)}} New</span>
+                        @endif
+                    </span>
+                    <span class="indicator text-warning d-none d-lg-block">
+                        @if (count($courseStudent)>0)
+                            <i class="fa fa-fw fa-circle"></i>
+                        @endif
+                    </span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                    <h6 class="dropdown-header">New Alerts:</h6>
+                    <div class="dropdown-divider"></div>
+                    @forelse ($courseStudent as $notification)
+                        <a class="dropdown-item" href="{{route('notification.show',$notification->id)}}">
+                            <span class="text-success">
+                                <strong>   
+                                    <i class="fa fa-long-arrow-up fa-fw"></i>{{$notification->student_id}}</strong>                                  
+                            </span>
+                            <span class="small float-right text-muted">{{ $notification->created_at }}</span>
+                            <div class="dropdown-message small">Compro el curso {{$notification->course_id}}, esperando validacion de su voucher</div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item small" href="{{route('notification.index')}}">View all alerts</a>
+                    @empty
+                        <span class="small">No hay notificaciones</span>
+                    @endforelse
+                    
+                    
+                </div>
+            </li>
             <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0 mr-lg-2">
                     <div class="input-group">

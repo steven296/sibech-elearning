@@ -10,6 +10,7 @@
 <script src="{{ asset('admin/vendor/jquery.selectbox-0.2.js') }}"></script>
 <script src="{{ asset('admin/vendor/retina-replace.min.js') }}"></script>
 <script src="{{ asset('admin/vendor/jquery.magnific-popup.min.js') }}"></script>
+<script src="cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('admin/js/admin.js') }}"></script>
 <!-- Custom scripts for this page-->
@@ -82,4 +83,14 @@
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script>
 	CKEDITOR.replace( 'article-ckeditor' );
+</script>
+
+<script >
+$(document).ready(function() {
+    $('#teach').DataTable();
+});
+
+$(document).ready(function() {
+    $('#student').DataTable();
+});
 </script>

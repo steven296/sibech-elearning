@@ -134,13 +134,13 @@ class CourseController extends Controller
         $count = $request->meta;
         $id_goal=$request->goal_id;
         
-        for($i=0;$i<count($count);$i++){
-            $goals = Goal::where('course_id',$id)->where('id',$id_goal[$i])->get();
-            $goals->goal=$request->meta[$i];
-            dd($goals);
-            $goals->save(); 
+        // for($i=0;$i<count($count);$i++){
+        //     $goals = Goal::where('course_id',$id)->where('id',$id_goal[$i])->get();
+        //     $goals->goal=$request->meta[$i];
             
-        }
+        //     $goals->save(); 
+            
+        // }
         
         
         // $count_rq = $request->requirement;
