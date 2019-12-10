@@ -46,6 +46,7 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Admin', 'middleware' => 'admin
 	Route::resource('category','CategoryController');
 	Route::resource('user','UserController');
 	Route::resource('notification','CourseStudentController');
+	Route::put('/notification/updateStatus/{id}','CourseStudentController@updateStatus')->name('notification.updateStatus');
 	
 });
 Route::post('/review/store','ReviewController@store')->name('review.store');

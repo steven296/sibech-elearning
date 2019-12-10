@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection as Collection;
 
 use App\Category;
@@ -19,9 +20,10 @@ use App\Teacher;
 class CourseController extends Controller
 {
     public function index(Request $request) {
+        $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
         // dd($request->get('orderBy'));
         $courses = Course::status($request->get('orderBy'))->orderBy('created_at','desc')->paginate();
-        return view('admin.courses.index',compact('courses'));
+        return view('admin.courses.index',compact('courses','courseStudent'));
     }
 
     public function create() {
@@ -93,6 +95,9 @@ class CourseController extends Controller
     }
 
     public function edit($id){
+
+        $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
+        
         $array_clases=array();
         
         $course = Course::find($id);
@@ -107,7 +112,7 @@ class CourseController extends Controller
             $array_clases=Arr::prepend($array_clases,$clases);
         }
         
-        return view('admin.courses.edit',compact('array_clases','temas','categorias','nivel','course','goals','requirements'));
+        return view('admin.courses.edit',compact('courseStudent','array_clases','temas','categorias','nivel','course','goals','requirements'));
     }
 
     public function update(Request $request, $id){

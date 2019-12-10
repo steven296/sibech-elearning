@@ -92,10 +92,10 @@
                         <a class="dropdown-item" href="{{route('notification.show',$notification->id)}}">
                             <span class="text-success">
                                 <strong>   
-                                    <i class="fa fa-long-arrow-up fa-fw"></i>{{$notification->student_id}}</strong>                                  
+                                    <i class="fa fa-long-arrow-up fa-fw"></i>{{$notification->Usuario}}</strong>                                  
                             </span>
                             <span class="small float-right text-muted">{{ $notification->created_at }}</span>
-                            <div class="dropdown-message small">Compro el curso {{$notification->course_id}}, esperando validacion de su voucher</div>
+                            <div class="dropdown-message small">Compro el curso {{$notification->Curso}}, esperando validacion de su voucher</div>
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item small" href="{{route('notification.index')}}">View all alerts</a>

@@ -64,4 +64,6 @@ class User extends Authenticatable
     public function socialAccount () {
     	return $this->hasOne(UserSocialAccount::class);
     }
+
+    
 }

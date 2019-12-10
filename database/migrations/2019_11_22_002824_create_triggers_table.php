@@ -74,6 +74,6 @@ class CreateTriggersTable extends Migration
     {
         Schema::dropIfExists('bitacora_user');
         Schema::dropIfExists('bitacora_category');
-        Schema::dropIfExists('bitacora_user');
+        Schema::dropIfExists('bitacora_courses');
     }
 }
