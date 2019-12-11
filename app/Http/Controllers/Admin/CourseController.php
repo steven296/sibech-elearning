@@ -138,46 +138,54 @@ class CourseController extends Controller
         $course->status=1;
         $course->save();   
 
-        $count = $request->meta;
-        $id_goal=$request->goal_id;
+        //Eliminando los antiguos registros de los requisitos
+        $ex_requirements = Requirement::where('course_id',$id);
+        $ex_requirements->delete();
+        //Insertando nuevos registros
+        $count_rq = $request->requirement;
+        for($i=0;$i<count($count_rq);$i++){
+            $requirements = new Requirement; 
+            $requirements->course_id=$course->id;
+            $requirements->requirement=$request->requirement[$i];
+            $requirements->save();
+        }
         
-        // for($i=0;$i<count($count);$i++){
-        //     $goals = Goal::where('course_id',$id)->where('id',$id_goal[$i])->get();
-        //     $goals->goal=$request->meta[$i];
+        //Eliminando los antiguos registros de las metas
+        $ex_goals = Goal::where('course_id',$id);
+        $ex_goals->delete();
+        //Insertando nuevos registros
+        $count_go = $request->meta;
+        for($i=0;$i<count($count_go);$i++){
+            $goals = new Goal;
+            $goals->course_id=$course->id;
+            $goals->goal=$request->meta[$i];
+            $goals->save(); 
+        }
+        
+        /*
+        //Eliminando los antiguos registros de los temas
+        $ex_temas = Tema::where('course_id',$id);
+        $ex_temas->delete();
+        //Insertando nuevos registros
+        $count_tm = $request->seccion;
+        $count_cl = $request->clase;
+        $count_url = $request->url;
+        for($i=0;$i<count($count_tm);$i++){
+            $temas = new Tema;
+            $temas->course_id=$course->id;
+            $temas->name=$request->seccion[$i];
+            $temas->save();
             
-        //     $goals->save(); 
-            
-        // }
-        
-        
-        // $count_rq = $request->requirement;
-        // for($i=0;$i<count($count_rq);$i++){
-        //     $requirements = Requirement::where('course_id',$id);
-        //     $requirements->course_id=$course->id;
-        //     $requirements->requirement=$request->requirement[$i];
-        //     $requirements->save();
-        // }
-
-        // $count_tm = $request->seccion;
-        // $count_cl = $request->clase;
-        // $count_url = $request->url;
-        
-
-        // for($i=0;$i<count($count_tm);$i++){
-        //     $temas = Tema::where('course_id',$id);
-        //     $temas->course_id=$course->id;
-        //     $temas->name=$request->seccion[$i];
-        //     $temas->save();
-            
-        //     for($k=0;$k<count($count_cl);$k++){
-        //         $lesson = Lesson::where('tema_id',$temas->id);
-        //         $lesson->tema_id=$temas->id;
-        //         $lesson->name=$request->clase[$i][$k];
-        //         $lesson->description='hola mundo';
-        //         $lesson->video=$request->url[$i][$k];
-        //         $lesson->save();
-        //     }
-        // }    
+            for($k=0;$k<count($count_cl);$k++){
+                $lesson = new Lesson;
+                $lesson->tema_id=$temas->id;
+                $lesson->name=$request->clase[$i][$k];
+                $lesson->description='hola mundo';
+                $lesson->video=$request->url[$i][$k];
+                $lesson->save();
+            }
+        }    
+        */
         return redirect('/dash/cursos');
     }
 
