@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -15,8 +16,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
+        
         $categories = Category::all();
-        return view('admin.categories.index',compact('categories'));
+        return view('admin.categories.index',compact('categories', 'courseStudent'));
     }
 
     /**
@@ -26,7 +29,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
+        
+        return view('admin.categories.create',compact('courseStudent'));
     }
 
     /**
@@ -63,8 +68,9 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-
-        return view('admin.categories.edit',compact('category'));
+        $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
+        
+        return view('admin.categories.edit',compact('category', 'courseStudent'));
     }
 
     /**

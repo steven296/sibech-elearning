@@ -36,13 +36,19 @@ class BuyController extends Controller
      */
     public function store(Request $request,$id)
     {
+        
+        /* Guardando imagen en la carpeta "public/storage/vouchers/" */
+        $image = $request->file('voucher');
+        $imageName = $image->getClientOriginalName();
+        $image->move(public_path('storage/vouchers'),$imageName);
+
         $user_id = auth()->user()->id;
         $pagar = new CourseStudent();
         $pagar->course_id=$id;
         $pagar->student_id=$user_id;
         $pagar->num_operacion=$request->get('numOperacion');
         $pagar->nombre_banco=$request->get('nameBanco');
-        $pagar->voucher=$request->get('voucher');
+        $pagar->voucher=$imageName;
         $pagar->save();
 
         return redirect('curso/'.$id)->with('success','Curso Comprado con exito');

@@ -27,9 +27,11 @@ class CourseController extends Controller
     }
 
     public function create() {
+        $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
+        
         $categories = Category::all();
         $levels = Level::all();
-        return view('admin.courses.create', compact('categories','levels'));
+        return view('admin.courses.create', compact('categories','levels', 'courseStudent'));
     }
 
     public function store(Request $request) {

@@ -19,7 +19,7 @@
                             <h4><i class="icon-users"></i>Deposito de Pago</h4>
                         </div>
                         <div class="mb-4 ml-4">
-                            <form action="{{route('pay.store',$curso->id)}}" method="POST">
+                            <form action="{{route('pay.store',$curso->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1"><strong>Nombre del Curso</strong></label>
