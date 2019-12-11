@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Review;
 use App\Course;
 
@@ -48,10 +49,12 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
+        $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
+        
         $reviews = Review::where('course_id',$id)->orderBy('created_at','desc')->paginate(6);
         $course_name = Course::where('id',$id)->get()->first();
         
-        return view('admin.courses.review',compact('reviews','course_name'));
+        return view('admin.courses.review',compact('reviews','course_name', 'courseStudent'));
     }
 
     /**

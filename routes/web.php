@@ -52,3 +52,4 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Admin', 'middleware' => 'admin
 Route::post('/review/store','ReviewController@store')->name('review.store');
 
 Route::get('/instructor/{teacher}','TeacherController@show')->name('teacher.show');
+Route::get('/pagos/{id}','PagosController@show')->name('pagos.show')->middleware('auth');

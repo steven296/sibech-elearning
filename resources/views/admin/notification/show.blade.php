@@ -13,19 +13,19 @@
     <h4>Notificación</h4>
     <div class="list_general">
         <ul>
-            @foreach ($courseStudentOne as $item)
+            @foreach ($courseStudentOne1 as $item)
                 <li>
                     <span>{{$item->created_at}}</span>
-                    <figure><img src="img/avatar1.jpg" alt=""></figure>
+                    <figure><img src="" alt=""></figure>
                     <h4>{{$item->Usuario}} <i class="pending">Pendiente</i></h4>
                     <p>Compro el curso {{$item->Curso}}, esperando validacion de su voucher</p>
                     @if ($item->voucher)
                         <div class="row">
-                            <div class="col-md-6">
-                                <img src="http://lorempixel.com/400/400">
+                            <div class="col-xs col-md col-sm col-lg-6 col-xl-6">
+                                <img src="{{ $item->pathAttachment()}}" width="400" height="400">
                                 <p>Hay voucher</p>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-xs col-md col-sm col-lg-6 col-xl-6">
                                 <form action="{{route('notification.updateStatus',$item->id)}}" method="post">
                                     @csrf
                                     @method('PUT')

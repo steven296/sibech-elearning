@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
     /**
@@ -14,9 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
+        $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
+        
         $students = User::where('role_id',3)->get();
         $teachers = User::where('role_id',2)->get();
-        return view('admin.users.index',compact('students','teachers'));
+        return view('admin.users.index',compact('students','teachers', 'courseStudent'));
     }
 
     /**

@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1"><strong>Adjuntar Comprobante</strong></label>
-                                    <input class="form-control form-control-lg" type="file" name="voucher" id="">
+                                    <input required class="form-control form-control-lg" type="file" name="voucher" id="">
                                 </div>
                                 <button class="col-lg-12 col-md-12 btn btn-primary">Pagar</button>
                             </form>
