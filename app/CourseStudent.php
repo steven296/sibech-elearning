@@ -16,5 +16,7 @@ class CourseStudent extends Model
         'id','course_id', 'user_id', 'num_operacion','nombre_banco','voucher','status'
     ];
 
-
+|   public function pathAttachment () {
+        return "/storage/courses/" . $this->picture;
+    }
 }

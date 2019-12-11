@@ -51,7 +51,7 @@ class CourseStudentController extends Controller
     {
         $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
         $courseStudentOne = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2 and cs.id=$id");
-        
+        dd($courseStudentOne);
         return view('admin.notification.show',compact('courseStudent','courseStudentOne'));
     }
 
