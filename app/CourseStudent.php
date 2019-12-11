@@ -11,7 +11,7 @@ class CourseStudent extends Model
     const REJECTED = 3;
     
     protected $table ='course_student';
-    public $timestamps=false;
+    
     protected $fillable = [
         'id','course_id', 'user_id', 'num_operacion','nombre_banco','voucher','status'
     ];

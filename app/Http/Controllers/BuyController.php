@@ -42,7 +42,12 @@ class BuyController extends Controller
         $pagar->student_id=$user_id;
         $pagar->num_operacion=$request->get('numOperacion');
         $pagar->nombre_banco=$request->get('nameBanco');
-        $pagar->voucher=$request->get('voucher');
+        if($request->hasFile('voucher')){
+            $image = $request->file('voucher');
+            $file = $image->store('images/voucher');
+            $course->picture=$file;
+        }
+        // $pagar->voucher=$request->get('voucher');
         $pagar->save();
 
         return redirect('curso/'.$id)->with('success','Curso Comprado con exito');

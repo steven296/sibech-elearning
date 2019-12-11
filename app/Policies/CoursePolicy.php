@@ -23,7 +23,7 @@ class CoursePolicy
     public function buy(User $user,Course $course){
         $user_id=auth()->user()->id;
 
-        $sql1 = DB::select("select count(course_student.course_id) as 'num' from students,course_student,courses where courses.id=? and course_student.course_id=courses.id and course_student.student_id=students.id and course_student.status=2 and students.user_id=?",[$course->id,$user_id]);
+        $sql1 = DB::select("select count(course_student.course_id) as 'num' from students,course_student,courses where courses.id=? and course_student.course_id=courses.id and course_student.student_id=students.id and students.user_id=?",[$course->id,$user_id]);
         
         // $course_for_student = DB::table('course_student')
         // ->join('courses','course_id','courses.id')
@@ -39,6 +39,13 @@ class CoursePolicy
         return $user->role_id !== Role::ADMIN && $sql1[0]->num==0;
     }
 
+    public function verificarStatus(User $user,Course $course){
+        $user_id=auth()->user()->id;
+
+        $sql1 = DB::select("select count(course_student.course_id) as 'num' from students,course_student,courses where courses.id=? and course_student.course_id=courses.id and  course_student.status=1 and course_student.student_id=students.id and students.user_id=?",[$course->id,$user_id]);
+        return $user->role_id !== Role::ADMIN && $sql1[0]->num==0;
+    }
+
     public function subscribe(User $user){
         $user_id=auth()->user()->id;
         $status = Suscripcion::where('user_id',$user_id)->get('status');
@@ -50,7 +57,7 @@ class CoursePolicy
     {
 
         $user_id=auth()->user()->id;
-        $sql1 = DB::select("select count(course_student.course_id) as 'num' from students,course_student,courses where courses.id=? and course_student.course_id=courses.id and course_student.student_id=students.id and students.user_id=?",[$course->id,$user_id]);
+        $sql1 = DB::select("select count(course_student.course_id) as 'num' from students,course_student,courses where courses.id=? and course_student.course_id=courses.id  and course_student.status=1 and  course_student.student_id=students.id and students.user_id=?",[$course->id,$user_id]);
         
         return ($sql1[0]->num>0) || $user->role_id == Role::ADMIN;
     }
