@@ -114,6 +114,7 @@ class CourseController extends Controller
             $array_clases=Arr::prepend($array_clases,$clases);
         }
         
+        
         return view('admin.courses.edit',compact('courseStudent','array_clases','temas','categorias','nivel','course','goals','requirements'));
     }
 
