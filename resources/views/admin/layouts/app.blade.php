@@ -13,7 +13,6 @@
         <!-- Contenido -->
         <div class="content-wrapper">
             <div class="container-fluid">
-
                 <ol class="breadcrumb">
                     @yield('breadcrumbs')
                 </ol>
@@ -21,7 +20,9 @@
                 @yield('content')
 
             </div>
+            
         </div>
+        
         <!-- /.container-wrapper-->
 
         @include('admin.partials.footer')

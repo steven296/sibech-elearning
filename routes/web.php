@@ -43,10 +43,16 @@ Route::group(['prefix' => 'dash', 'namespace' => 'Admin', 'middleware' => 'admin
 		Route::resource('review','ReviewController');
 		Route::put('/updateStatus/{id}','CourseController@updateStatus')->name('admin.cursos.updateStatus');
 	});
+	Route::group(['prefix'=>'pdf'],function(){
+		Route::get('/users','UserController@pdf')->name('users.pdf');
+		Route::get('/courses','CourseController@pdf')->name('courses.pdf');
+	});
 	Route::resource('category','CategoryController');
 	Route::resource('user','UserController');
+	
 	Route::resource('notification','CourseStudentController');
 	Route::put('/notification/updateStatus/{id}','CourseStudentController@updateStatus')->name('notification.updateStatus');
+	Route::resource('chart','ChartController');
 	
 });
 Route::post('/review/store','ReviewController@store')->name('review.store');

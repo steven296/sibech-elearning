@@ -197,4 +197,14 @@ class CourseController extends Controller
 
         return redirect('/dash/cursos');
     }
+
+    public function pdf(){
+        $courses = Course::with('category','teacher','reviews')->get();
+  
+        $view = view('admin.reports.courses.show',compact('courses'));
+  
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('admin.reports');
+      }
 }

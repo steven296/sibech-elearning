@@ -51,9 +51,7 @@ class CourseStudentController extends Controller
     {
 
         $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
-<<<<<<< HEAD
-        // $courseStudentOne = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs
-        // where cs.student_id = u.id and cs.course_id = c.id and cs.status=2 and cs.id=$id");
+        
         
         $courseStudentOne1 = CourseStudent::join('courses','courses.id','course_student.course_id')
         ->join('users','users.id','course_student.student_id')
@@ -64,11 +62,6 @@ class CourseStudentController extends Controller
 
        
         return view('admin.notification.show',compact('courseStudent','courseStudentOne1'));
-=======
-        $courseStudentOne = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2 and cs.id=$id");
-        dd($courseStudentOne);
-        return view('admin.notification.show',compact('courseStudent','courseStudentOne'));
->>>>>>> 2fbc15997175d95a8c1acd254222a168dfd7539e
     }
 
     /**

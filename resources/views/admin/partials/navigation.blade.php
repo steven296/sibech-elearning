@@ -48,12 +48,25 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
-                <a class="nav-link" href="#">
-                <i class="fa fa-fw fa-bell"></i>
-                <span class="nav-link-text">Notificaciones</span>
+           
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reportes">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseReports" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-print"></i>
+                <span class="nav-link-text">Reportes</span>
                 </a>
+                <ul class="sidenav-second-level collapse" id="collapseReports">
+                    <li>
+                        <a href="{{route('users.pdf')}}" target="_BLANK">Usuarios</a>
+                    </li>
+                    <li>
+                        <a href="{{route('courses.pdf')}}" target="_BLANK">Cursos</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_BLANK">Sesiones</a>
+                    </li>
+                </ul>
             </li>
+
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
                 <a class="nav-link" href="#">
                 <i class="fa fa-fw fa-wrench"></i>

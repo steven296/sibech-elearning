@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
             $table->enum('status', [
 	        	\App\User::HABILITED, \App\User::DESHABILITED
 	        ])->default(\App\User::HABILITED);;
-
+            $table->string('country')->nullable();
 	        $table->rememberToken();
 	        $table->timestamps();
         });

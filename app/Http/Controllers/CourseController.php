@@ -85,6 +85,8 @@ class CourseController extends Controller
       $curso = Course::find($id);
       return view('courses.process',compact('categories','curso'));
     }
+
+    
     
     
 }

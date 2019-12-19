@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
-use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class CharController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $courseStudent = DB::select("select c.name as 'Curso',u.name as 'Usuario',cs.* from courses c,users u,course_student cs where cs.student_id = u.id and cs.course_id = c.id and cs.status=2");
         
-        $students = User::where('role_id',3)->get();
-        $teachers = User::where('role_id',2)->get();
-        return view('admin.users.index',compact('students','teachers', 'courseStudent'));
     }
 
     /**
@@ -63,8 +57,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('admin.users.edit',compact('user'));
+        //
     }
 
     /**
@@ -76,11 +69,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->status=$request->get('status');
-        $user->save();
-
-        return back();
+        //
     }
 
     /**
@@ -92,14 +81,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function pdf(){
-        $users = User::where('role_id','!=',1)->get();
-        $view = view('admin.reports.users.show',compact('users'));
-
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view)->setPaper('a4');
-        return $pdf->stream('admin.reports');
     }
 }
