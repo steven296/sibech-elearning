@@ -16,21 +16,11 @@
             </div>
         </div>
     </div>
-    <!-- /row-->
-    {{-- <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Instructor</label>
-                <input type="text" class="form-control" value="{{ auth()->user()->id}}" name="teacher_id" disabled>
-            </div>
-        </div>
-    </div> --}}
-    <!-- /row-->
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <label>Imagen del Curso</label>
-                <input type="file" class="form-control" name="picture">
+                <input type="file" name="picture" class="form-control" id="">
             </div>
         </div>
     </div>

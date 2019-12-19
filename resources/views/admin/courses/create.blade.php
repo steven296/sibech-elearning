@@ -13,19 +13,19 @@
 @section('content')
 	
 <div class="container">
-    <form action="{{ route('admin.cursos.store') }}" method="post">
+    <form action="{{ route('admin.cursos.store') }}" method="post" enctype="multipart/form-data">
 
 	  	@csrf
 
-	  	@include('admin.partials.courses.informacion-curso')
+      @include('admin.partials.courses.informacion-curso')
 
-		@include('admin.partials.courses.requerimentos-cursos')
-		
-		@include('admin.partials.courses.metas-cursos')
+      @include('admin.partials.courses.requerimentos-cursos')
+      
+      @include('admin.partials.courses.metas-cursos')
 
-	  	@include('admin.partials.courses.categoria-curso')
+      @include('admin.partials.courses.categoria-curso')
 
-      	@include('admin.partials.courses.seccion-clase')
+      @include('admin.partials.courses.seccion-clase')
 
 		<input type="submit" class="btn btn-primary form-control mt-3" placeholder="Enviar">
     </form>

@@ -35,7 +35,14 @@ class CourseController extends Controller
     }
 
     public function store(Request $request) {
+
         
+         /* Guardando imagen en la carpeta "public/storage/vouchers/" */
+        $image = $request->file('picture');
+        
+        $imageName = $image->getClientOriginalName();
+        $image->move(public_path('storage/courses'),$imageName);
+
         $course = new Course();
         $course->teacher_id=auth()->user()->id;
         $course->category_id=$request->get('category_id');
@@ -44,14 +51,9 @@ class CourseController extends Controller
         $course->description=$request->get('description');
         $course->slug=str_slug('-',$request->get('name'));
         $course->price=$request->get('price');
-
-        if($request->hasFile('picture')){
-            $image = $request->file('picture');
-            $file = $image->store('courses');
-            $course->picture=$file;
-        }
-        
+        $course->picture = $imageName; 
         $course->status=1;
+
         $course->save();
         
         $count = $request->meta;
@@ -93,7 +95,7 @@ class CourseController extends Controller
             }
         }
         
-        return view('admin.courses.index');
+        return redirect('/dash/cursos');
     }
 
     public function edit($id){
